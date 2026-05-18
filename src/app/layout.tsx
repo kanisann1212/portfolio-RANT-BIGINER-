@@ -32,8 +32,7 @@ export default function RootLayout({
       lang="ja"
       className={`${valorant.className} h-full antialiased`} 
     >
-      
-      <body className="min-h-full flex flex-col bg-black ">{children}</body>
+      <body className="min-h-full flex flex-col bg-black p-0 m-0">{children}</body>
     </html>
   );
 }
