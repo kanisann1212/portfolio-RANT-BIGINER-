@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono,Archivo_Black } from "next/font/google";
 import "./globals.css";
+
+const valorant = Archivo_Black({
+  weight :"400",
+  subsets: ["latin"]
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +30,10 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${valorant.className} h-full antialiased`} 
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      
+      <body className="min-h-full flex flex-col bg-slate-800">{children}</body>
     </html>
   );
 }
