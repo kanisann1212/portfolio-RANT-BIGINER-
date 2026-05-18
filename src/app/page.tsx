@@ -12,7 +12,7 @@ export default function Home() {
           playsInline
         />
       </div>
-      <div className="absolute ">
+      <div className="absolute top-15 ">
         <h1 className='font-bold text-white italic text-center text-9xl ' >RANT BIGINER</h1>
         <p className="text-center text-2xl text-white">ーVALORANT初心者のためのサイトー</p>
         <button className="text-center bg-blue-600 text-red-600 rounded-lg w-15 h-10 mix-blend-screen">始める</button>
