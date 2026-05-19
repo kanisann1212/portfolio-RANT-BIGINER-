@@ -1,3 +1,5 @@
+import { Header } from "@/components/Header"
+
 export default function Guns()  {
-  return <h1>4545</h1>
+  return <Header />
 }
