@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Video />
-      <div className="fixed left-10" >
+      <div className="fixed left-10 top-10" >
         <Image 
         src="/VALORANT.png"
         alt="VALORANT"
