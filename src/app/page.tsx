@@ -2,16 +2,25 @@ import { User } from "lucide-react"
 import { Video } from "@/components/Video";
 import { Top } from "@/components/Top";
 import { Midashi } from "@/components/Midashi";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <Video />
-      <div className="absolute top-10 right-10" >
-        <User className="w-7 h-7 text-white" />
+      <div className="fixed left-10" >
+        <Image 
+        src="/VALORANT.png"
+        alt="VALORANT"
+        width={200}
+        height={400}
+        />
+      </div>
+      <div className="fixed top-10 right-10" >
+        <User className="w-10 h-10 text-white" />
       </div>
       <Top />
-      <div className="bg-black mt-40 ml-10">
+      <div className=" mt-40 bg-[image:url('/BGVAL.jpg')] bg-contain bg-center  rounded-2xl w-full  mask-t-from-95% mask-b-from-90%  ">
         <Midashi
           src={"/abys.webp"}
           midashi={"MAP"}
