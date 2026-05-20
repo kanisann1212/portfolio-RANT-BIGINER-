@@ -35,42 +35,42 @@ type MapInfo = {
 }
 
 
- export type WeponType = {
+export type WeponType = {
   uuid: string,
   displayIcon: string,
   displayName: string,
   killStreamIcon: string,
-  weaponStats:WeaponStatus
-  skins:skin[]
-  shopData:Shop
+  weaponStats: WeaponStatus
+  skins: skin[]
+  shopData: Shop
 }
 
 type Range = {
-  bodyDamage:number,
-  headDamage:number,
-  legDamage:number,
-  rangeEndMeters:number,
-  rangeStartMeters:number
+  bodyDamage: number,
+  headDamage: number,
+  legDamage: number,
+  rangeEndMeters: number,
+  rangeStartMeters: number
 }
 
 type Shop = {
-  categoryText:string,
-  cost:number,
-  newImage:string
+  categoryText: string,
+  cost: number,
+  newImage: string
 }
 
 export type Skined = {
-  uuid:string,
-  displayName:string,
-  displayIcon:string,
-  chromas:SkinLevels[]
+  uuid: string,
+  displayName: string,
+  displayIcon: string,
+  chromas: SkinLevels[]
 }
 
 export type SkinLevels = {
-  uuid:string,
-  displayIcon:string,
-  streamedVideo:string,
-  swatch:string,
+  uuid: string,
+  displayIcon: string,
+  streamedVideo: string,
+  swatch: string,
 }
 
 type WeaponStatus = {
@@ -78,5 +78,34 @@ type WeaponStatus = {
   firstBulletAccuracy: number,
   magazineSize: number,
   reloadTimeSeconds: number,
-  damageRanges:Range[]
+  damageRanges: Range[]
+}
+
+export type Agent = {
+  uuid: string,
+  displayName: string,
+  description: string,
+  developerName: string,
+  minimapPortrait: string,
+  killfeedPortrait: string,
+  displayIconSmall: string,
+  displayIcon: string,
+  description: string,
+  bustPortrait: string,
+  role:role
+  background: string,
+  abilities:skils[]
+}
+
+type role = {
+  description: string,
+  displayName: string,
+  displayIcon: string,
+}
+
+type skils = {
+  slot:string,
+  displayName:string,
+  description:string,
+  displayIcon:string,
 }
