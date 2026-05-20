@@ -4,7 +4,7 @@ import { User } from "lucide-react"
 
 export const Header = () => {
   return (
-    <div className="flex justify-between items-center text-black  pt-5 mb-5 border-b">
+    <div className="flex justify-between items-center text-black  pt-5  border-b">
       <div className="flex pl-10 pb-5 items-center">
         <Link href="/" className="text-black">
           <Image
@@ -27,3 +27,6 @@ export const Header = () => {
     </div>
   )
 }
+
+
+// 後で動画埋め込む

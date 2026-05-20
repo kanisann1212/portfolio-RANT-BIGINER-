@@ -4,8 +4,6 @@ import Link from "next/link"
 export const MapList = async () => {
   const res = await fetch("https://valorant-api.com/v1/maps")
   const json = await res.json()
-  console.log(json.data)
-
   const BattleMap: MapType[] = json.data
     .filter((map: MapType) => map.splash)
     .filter((map: MapType) => map.tacticalDescription)
