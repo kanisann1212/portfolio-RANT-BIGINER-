@@ -11,6 +11,8 @@ export default async function Mapp({ params }: Prop) {
   const res = await fetch(`https://valorant-api.com/v1/maps/${maping}`)
   const json = await res.json()
   const MapMicro: MapType = json.data
+  console.log(MapMicro)
+ 
   return (
     <>
       <Header />
@@ -23,13 +25,18 @@ export default async function Mapp({ params }: Prop) {
         }}
       >
         <h1 className="text-9xl">{MapMicro.displayName}</h1>
+        <div className="flex justify-center">
+        <div className="relative w-[1000]">
         <Image
           src={MapMicro.displayIcon}
           alt="VALORANT"
-          width={900}
-          height={900}
-          className="ml-auto mr-auto"
+          width={500}
+          height={500}
+          className="pl-auto pr-auto w-full h-auto"
         />
+        </div>
+        </div>
+        <p>{MapMicro.tacticalDescription}</p>
       </div>
     </>
   )
