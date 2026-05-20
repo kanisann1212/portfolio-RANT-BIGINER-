@@ -10,19 +10,37 @@ export const MapList = async () => {
     .filter((map: MapType) => map.splash)
     .filter((map: MapType) => map.tacticalDescription)
 
+  const SpanStyles: string[] = [
+    "row-span-2 col-span-1",
+    "col-span-2",
+    "col-span-2",
+    "col-span-2",
+    "row-span-2 col-span-1",
+    "col-span-2",
+    "col-span-3",
+    "col-span-1 row-span-2",
+    "col-span-2",
+    "col-span-2",
+    "row-span-1",
+    "col-span-2",
+  ]
+
   return (
-    <div className="grid grid-cols-3 gap-2 m-5">
-      {BattleMap.map((item) => {
+    <div className="grid grid-cols-3 gap-8 m-10">
+      {BattleMap.map((item, index) => {
         return (
-          <div key={item.uuid} className="relative rounded-3xl" >
-            <Image
-              src={item.splash}
-              alt={item.displayName}
-              width={900}
-              height={338}
-             />
+          <div
+            key={item.uuid}
+            className={`relative rounded-3xl ${SpanStyles[index % SpanStyles.length]} `}
+            style={{
+              backgroundImage: `url(${item.splash})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              minHeight: "200px",
+            }}
+          >
             <h1 className="text-white text-3xl absolute top-4 left-4">{item.displayName}</h1>
-            </div>
+          </div>
         )
       })}
     </div>
