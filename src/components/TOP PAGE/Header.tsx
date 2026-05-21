@@ -22,6 +22,7 @@ export const Header = () => {
         <Link href="/" className="text-black text-3xl">HOME</Link>
         <Link href="/guns" className="text-black text-3xl">WEAPON</Link>
         <Link href="/map" className="text-black text-3xl">MAP</Link>
+        <Link href="/egents" className="text-black text-3xl">EGENT</Link>
         <User className="w-10 h-10 " />
       </div>
     </div>
