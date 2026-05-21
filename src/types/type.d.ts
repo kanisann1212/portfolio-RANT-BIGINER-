@@ -1,9 +1,13 @@
 
+
 export type midashiProps = {
   midashi: string,
   src: string,
-  honbun: string
   page: string
+}
+
+export type AProps = {
+  A: Agent[]
 }
 
 export type MapType = {
@@ -90,20 +94,19 @@ export type Agent = {
   killfeedPortrait: string,
   displayIconSmall: string,
   displayIcon: string,
-  description: string,
   bustPortrait: string,
   role:role
   background: string,
   abilities:skils[]
 }
 
-type role = {
+export type role = {
   description: string,
   displayName: string,
   displayIcon: string,
 }
 
-type skils = {
+export type skils = {
   slot:string,
   displayName:string,
   description:string,

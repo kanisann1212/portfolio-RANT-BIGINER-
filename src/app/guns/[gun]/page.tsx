@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import { Header } from "@/components/TOP PAGE/Header";
 
 type GunPromise = {
   params:Promise<{gun:string}>

@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header"
+import { Header } from "@/components/TOP PAGE/Header"
 import type { SkinLevels, WeponType, Skined } from "@/types/type"
 import Image from "next/image"
 import Link from "next/link"

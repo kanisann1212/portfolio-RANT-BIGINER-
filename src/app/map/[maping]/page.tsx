@@ -1,5 +1,5 @@
-import { Header } from "@/components/Header"
-import { MapSChild } from "@/components/MapSChild"
+import { Header } from "@/components/TOP PAGE/Header"
+import { MapSChild } from "@/components/MAP/MapSChild"
 import type { MapType } from "@/types/type"
 
 
