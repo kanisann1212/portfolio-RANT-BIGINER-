@@ -47,6 +47,7 @@ export type WeponType = {
   weaponStats: WeaponStatus
   skins: skin[]
   shopData: Shop
+  defaultSkinUuid:string,
 }
 
 type Range = {
