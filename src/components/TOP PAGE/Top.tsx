@@ -36,8 +36,7 @@ export const Top = () => {
         </div>
         <div className="flex-1 pb-20 justify-between items-center">
         <h1 className="text-black m-45 mb-20  text-7xl text-center">
-          -FOR YOU-</h1>
-
+          ーFOR YOUー</h1>
         <p className="text-black font-bold text-center p-10 text-2xl">このサイトは初心者である方全員に向けて作りました。<br />どうかこのサイトがあなたのバロ人生の糧になることを祈っております。</p>
         </div>
       </div>
