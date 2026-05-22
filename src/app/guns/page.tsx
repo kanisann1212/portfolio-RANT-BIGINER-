@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default async function Guns() {
   const basepath = "/guns"
-  const res = await fetch("https://valorant-api.com/v1/weapons?language=ja-JP")
+  const res = await fetch("https://valorant-api.com/v1/weapons")
   const json = await res.json()
   const filterdWeponSkin: WeponType[] = json.data.map((wepon: WeponType) => ({
     ...wepon,
@@ -16,25 +16,27 @@ export default async function Guns() {
   return (
     <>
       <Header />
-      {filterdWeponSkin.map((wepon: WeponType) => (
-        <div key={wepon.uuid} className="text-black">
-          <Link
-            href={`${basepath}/${wepon.uuid}`}
-            key={wepon.uuid}
-            className="relative rounded-3xl"
-          >
-            <Image src={wepon.displayIcon} alt={wepon.uuid} width={200} height={400} />
-          </Link>
-          <p>武器名：{wepon.displayName}</p>
-          <p>発射レート：{wepon.weaponStats?.fireRate}</p>
-          <p>装填弾数：{wepon.weaponStats?.magazineSize}</p>
-          <p>リロード速度：{wepon.weaponStats?.reloadTimeSeconds}</p>
-          <p>集弾率：{wepon.weaponStats?.firstBulletAccuracy}</p>
-          <p>{wepon.shopData?.categoryText}</p>
-          <p>{wepon.shopData?.cost}</p>
-
-        </div>
-      ))}
+      <div
+        className="grid gap-2 mt-10 ml-10"
+        style={{ gridTemplateColumns: 'repeat(2,200px)' }}>
+        {filterdWeponSkin.map((wepon: WeponType) => (
+          <div className="flex flex-col ">
+            <div key={wepon.uuid} className="relative w-[200px] h-[200px] overflow-hidden bg-black rounded-4xl ">
+              <Image
+                src={wepon.displayIcon}
+                alt={wepon.uuid}
+                fill
+                className="rotate-90 object-contain  " />
+              <Link
+                href={`${basepath}/${wepon.uuid}`}
+                key={wepon.uuid}
+              >
+                <p className="font-bold text-3xl [writing-mode:vertical-rl] text-center">{wepon.displayName}</p>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div >
     </>
   )
 }
