@@ -1,4 +1,5 @@
 import { Header } from "@/components/TOP PAGE/Header"
+import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { SkinLevels, WeponType, Skined } from "@/types/type"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,27 +17,30 @@ export default async function Guns() {
   return (
     <>
       <Header />
-      <div
-        className="grid gap-2 mt-10 ml-10"
-        style={{ gridTemplateColumns: 'repeat(2,200px)' }}>
-        {filterdWeponSkin.map((wepon: WeponType) => (
-          <div className="flex flex-col ">
-            <div key={wepon.uuid} className="relative w-[200px] h-[200px] overflow-hidden bg-black rounded-4xl ">
-              <Image
-                src={wepon.displayIcon}
-                alt={wepon.uuid}
-                fill
-                className="rotate-90 object-contain  " />
+      <MIBAE gazou="/FIRE.jpg" syubun="エイムはすべての人に与えられた平等の力です。" hukubun="適切な武器と完璧なエイムで相手を叩き潰しましょう" kime="ーBring it onー" />
+      <div className="bg-[url(/GANBG.jpg)]  bg-no-repeat bg-[length:100%] h-[1600px] mask-t-from-80% relative mask-b-from-90% ">
+        <div className="absolute top-100">
+          <div
+            className="grid gap-22 ml-2"
+            style={{ gridTemplateColumns: 'repeat(10,170px)' }}>
+            {filterdWeponSkin.map((wepon: WeponType) => (
               <Link
                 href={`${basepath}/${wepon.uuid}`}
                 key={wepon.uuid}
               >
-                <p className="font-bold text-3xl [writing-mode:vertical-rl] text-center">{wepon.displayName}</p>
+                <div key={wepon.uuid} className="relative w-[200px] h-[400px] overflow-hidden backdrop-blur-xl border rounded-3xl ">
+                  <Image
+                    src={wepon.displayIcon}
+                    alt={wepon.uuid}
+                    fill
+                    className="rotate-90 object-contain rouded-3xl " />
+                  <p className="font-bold text-3xl [writing-mode:vertical-rl] text-center">{wepon.displayName}</p>
+                </div>
               </Link>
-            </div>
+            ))}
           </div>
-        ))}
-      </div >
+        </div>
+      </div>
     </>
   )
 }
