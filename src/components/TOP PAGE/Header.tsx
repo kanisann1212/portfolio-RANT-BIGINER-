@@ -19,7 +19,7 @@ export const Header = () => {
         </Link>
       </div>
       <div className="space-x-15 flex pr-15 pb-5">
-        <Link href="/" className="text-black text-3xl">HOME</Link>
+        <Link href="/" className="text-black text-3xl ">HOME</Link>
         <Link href="/guns" className="text-black text-3xl">WEAPON</Link>
         <Link href="/map" className="text-black text-3xl">MAP</Link>
         <Link href="/egents" className="text-black text-3xl">EGENT</Link>
