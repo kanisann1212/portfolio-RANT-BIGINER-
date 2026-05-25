@@ -156,3 +156,12 @@ export type AgentTypeInfo = {
   homeScreenPromoTileImage: null
   assetPath: string
 }
+
+type MapAgent = {
+  name: string
+  fullPortrait: string
+  roleIcon: string
+}
+export type MapName = {
+  agents: MapAgent[],
+}
