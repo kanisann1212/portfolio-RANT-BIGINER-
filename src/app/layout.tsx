@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,Archivo_Black } from "next/font/google";
+import { Geist, Geist_Mono,Archivo_Black,Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 
 const valorant = Archivo_Black({
   weight :"400",
   subsets: ["latin"]
 })
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
