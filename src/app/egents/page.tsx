@@ -6,9 +6,14 @@ import { Header } from "@/components/TOP PAGE/Header"
 import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { Agent } from "@/types/type"
 
+type Egentdata = {
+  data:Agent[]
+}
+
+
 export default async function Egents() {
   const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
-  const json = await res.json()
+  const json : Egentdata= await res.json()
   const Sentinel = json.data
     .filter((EGEN: Agent) => EGEN.role.displayName === "センチネル")
   const Initiater = json.data
