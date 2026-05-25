@@ -14,6 +14,7 @@ type Egentdata = {
 export default async function Egents() {
   const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
   const json : Egentdata= await res.json()
+  console.log(json.data)
   const Sentinel = json.data
     .filter((EGEN: Agent) => EGEN.role.displayName === "センチネル")
   const Initiater = json.data

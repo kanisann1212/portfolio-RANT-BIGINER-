@@ -23,6 +23,7 @@ export default async function Chracter({ params }: EgentPromise) {
   const res = await fetch(`${basepath}/${chracter}?isPlayableCharacter=true&language=ja-JP`)
   const json : Egentdata = await res.json()
   const Egentinfo = json.data
+  console.log(Egentinfo)
   return (
     <div className="-z-0 relative bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 min-h-screen">
       <div className="relative z-10">
