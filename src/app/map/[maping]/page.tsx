@@ -14,8 +14,7 @@ export default async function MapS({ params }: Prop) {
   const MapMicro: MapType = json.data
   return (
     <>
-      <Header />
-      <MapSChild MapMicro={MapMicro} />
+      <MapSChild MapMicro={MapMicro} ></MapSChild>
     </>
   )
 };

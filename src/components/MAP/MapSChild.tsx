@@ -1,5 +1,6 @@
 import { MapType } from "@/types/type"
 import Image from "next/image"
+import { Header } from "../TOP PAGE/Header"
 
 export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
   return(
@@ -13,6 +14,7 @@ export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
           minHeight: "200px",
         }}
       >
+        <Header />
         <h1 className="text-9xl">{MapMicro.displayName}</h1>
         <div className="flex justify-center">
           <div className="relative w-[1000]">
