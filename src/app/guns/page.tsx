@@ -3,16 +3,19 @@ import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { SkinLevels, WeponType, Skined } from "@/types/type"
 import Image from "next/image"
 import Link from "next/link"
+type Wepondata ={
+  data:WeponType[]
+}
 
 export default async function Guns() {
   const basepath = "/guns"
   const res = await fetch("https://valorant-api.com/v1/weapons")
-  const json = await res.json()
+  const json :Wepondata = await res.json()
   const filterdWeponSkin: WeponType[] = json.data.map((wepon: WeponType) => ({
     ...wepon,
     skins: wepon.skins.filter((skin: Skined) => skin.chromas.length >= 4),
   }))
-  console.log(filterdWeponSkin)
+  console.log(json)
 
   return (
     <>

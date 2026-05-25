@@ -113,3 +113,46 @@ export type skils = {
   description:string,
   displayIcon:string,
 }
+
+type RoleInfo = {
+  uuid: string
+  displayName: string
+  description: string
+  displayIcon: string
+  assetPath: string
+}
+
+type AbilityInfo = {
+  slot: string
+  displayName: string
+  description: string
+  displayIcon: string | null
+}
+
+export type AgentTypeInfo = {
+  uuid: string
+  displayName: string
+  description: string
+  developerName: string
+  background: string
+  backgroundGradientColors: string[]
+  displayIcon: string
+  displayIconSmall: string
+  bustPortrait: string
+  fullPortrait: string
+  fullPortraitV2: string
+  killfeedPortrait: string
+  minimapPortrait: string
+  characterTags: string[] | null
+  role: Role        // ← ネストしたオブジェクト
+  abilities: Ability[]  // ← オブジェクトの配列
+  isPlayableCharacter: boolean
+  isBaseContent: boolean
+  isAvailableForTest: boolean
+  isFullPortraitRightFacing: boolean
+  releaseDate: string
+  recruitmentData: null
+  voiceLine: null
+  homeScreenPromoTileImage: null
+  assetPath: string
+}
