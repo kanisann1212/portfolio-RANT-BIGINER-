@@ -161,6 +161,7 @@ type MapAgent = {
   name: string
   fullPortrait: string
   roleIcon: string
+  uuid:string
 }
 export type MapName = {
   agents: MapAgent[],
