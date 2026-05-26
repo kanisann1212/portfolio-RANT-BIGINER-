@@ -1,7 +1,7 @@
 import { MapType } from "@/types/type"
 import Image from "next/image"
 import { Header } from "../TOP PAGE/Header"
-import { MapsPattern } from "./MapPattern"
+import { MapsPattern } from "../../data/MapPattern"
 
 // typ Mapspattern = {
 //   [key:string]:{EgentIcon:string,Egent}
@@ -22,7 +22,7 @@ export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
           minHeight: "200px",
         }}
       >
-        <Header />
+        <Header Hanten={true} />
         <h1 className="text-9xl">{MapMicro.displayName}</h1>
         <div className="flex justify-center">
           <div className="relative w-[1000]">
