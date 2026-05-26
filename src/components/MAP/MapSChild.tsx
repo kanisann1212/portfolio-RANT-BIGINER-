@@ -33,10 +33,10 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
               className=" w-full h-auto"
             />
           </div>
-          <MapsRecomendparts MapsRecomend={MapsRecomend} />
         </div>
-
+        <MapsRecomendparts MapsRecomend={MapsRecomend} />
       </div>
+
     </>
   )
 }
