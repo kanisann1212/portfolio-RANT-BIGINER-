@@ -3,9 +3,11 @@ import Image from "next/image"
 import { Dela_Gothic_One } from "next/font/google"
 import { EgentSkils } from "@/components/AGENT/EGENTskils"
 import type { AgentTypeInfo } from "@/types/type"
+import { AgentMapPattern } from "@/data/EgentMapPattern"
+import Link from "next/link"
 
 type Egentdata = {
-  data:AgentTypeInfo
+  data: AgentTypeInfo
 }
 
 type EgentPromise = {
@@ -19,11 +21,15 @@ const valorantEgent = Dela_Gothic_One({
 
 export default async function Chracter({ params }: EgentPromise) {
   const basepath = 'https://valorant-api.com/v1/agents'
+  const basepatMap = "/map"
   const { chracter } = await params
   const res = await fetch(`${basepath}/${chracter}?isPlayableCharacter=true&language=ja-JP`)
-  const json : Egentdata = await res.json()
+  const json: Egentdata = await res.json()
   const Egentinfo = json.data
-  console.log(Egentinfo)
+  const MapAgentInfo: string = Egentinfo.displayName
+  const MapOfAgent = AgentMapPattern[MapAgentInfo].maps
+
+  console.log(MapOfAgent)
   return (
     <div className="-z-0 relative bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 min-h-screen">
       <div className="relative z-10">
@@ -68,6 +74,24 @@ export default async function Chracter({ params }: EgentPromise) {
           <EgentSkils description={Egentinfo.abilities[1].description} Name={Egentinfo.abilities[1].displayName} Icon={Egentinfo.abilities[1].displayIcon} />
           <EgentSkils description={Egentinfo.abilities[2].description} Name={Egentinfo.abilities[2].displayName} Icon={Egentinfo.abilities[2].displayIcon} />
           <EgentSkils description={Egentinfo.abilities[3].description} Name={Egentinfo.abilities[3].displayName} Icon={Egentinfo.abilities[3].displayIcon} />
+          <h1 className={`${valorantEgent.className} font-bold text-5xl text-center text-white m-10`}>主要マップ</h1>
+          {MapOfAgent.map((item) => {
+            return (
+              <Link
+                href={`${basepatMap}/${item.uuid}`}
+                key={item.uuid}
+                className="relative rounded-3xl w-[800px] h-[200px] block"
+                style={{
+                  backgroundImage: `url(${item.splash})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  minHeight: "200px",
+                }}
+              >
+                <h1 className="text-white text-3xl absolute top-4 left-4">{item.displayName}</h1>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </div>
