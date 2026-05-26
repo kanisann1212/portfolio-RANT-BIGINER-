@@ -24,7 +24,7 @@ export const MapList = async () => {
     "row-span-1",
     "col-span-2",
   ]
-
+console.log(BattleMap)
   return (
     <div className="grid grid-cols-3 gap-8 m-10">
       {BattleMap.map((item, index) => {

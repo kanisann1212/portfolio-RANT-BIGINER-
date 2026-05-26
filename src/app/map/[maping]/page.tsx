@@ -1,4 +1,5 @@
 import { MapSChild } from "@/components/MAP/MapSChild"
+import { MapsRecomendparts } from "@/components/MAP/MapsRecomend"
 import type { MapType } from "@/types/type"
 
 
@@ -17,7 +18,7 @@ export default async function MapS({ params }: Prop) {
   const MapMicro: MapType = json.data
   return (
     <>
-      <MapSChild MapMicro={MapMicro} ></MapSChild>
+      <MapSChild MapMicro={MapMicro} />
     </>
   )
 };
