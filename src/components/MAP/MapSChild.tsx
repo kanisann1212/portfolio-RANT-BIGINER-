@@ -2,18 +2,17 @@ import { MapType } from "@/types/type"
 import Image from "next/image"
 import { Header } from "../TOP PAGE/Header"
 import { MapsPattern } from "../../data/MapPattern"
+import { MapsRecomendparts } from "./MapsRecomend"
 
-// typ Mapspattern = {
-//   [key:string]:{EgentIcon:string,Egent}
-// }
 
-export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
-  const MapNameInfo :string = MapMicro.displayName
+
+export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
+  const MapNameInfo: string = MapMicro.displayName
   const MapsRecomend = MapsPattern[MapNameInfo].agents
+  console.log(MapsRecomend)
 
-  return(
+  return (
     <>
-  
       <div
         style={{
           backgroundImage: `url(${MapMicro.stylizedBackgroundImage})`,
@@ -24,8 +23,8 @@ export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
       >
         <Header Hanten={true} />
         <h1 className="text-9xl">{MapMicro.displayName}</h1>
-        <div className="flex justify-center">
-          <div className="relative w-[1000]">
+        <div className="flex justify-center items-center">
+          <div className="relative w-[1000] ">
             <Image
               src={MapMicro.displayIcon}
               alt="VALORANT"
@@ -34,8 +33,9 @@ export const MapSChild = ({MapMicro}:{MapMicro:MapType}) =>{
               className=" w-full h-auto"
             />
           </div>
+          <MapsRecomendparts MapsRecomend={MapsRecomend} />
         </div>
-        <p>{MapMicro.tacticalDescription}</p>
+
       </div>
     </>
   )
