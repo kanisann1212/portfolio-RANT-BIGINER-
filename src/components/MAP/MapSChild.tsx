@@ -23,8 +23,8 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
       >
         <Header Hanten={true} />
         <h1 className="text-9xl">{MapMicro.displayName}</h1>
-        <div className="flex justify-center items-center">
-          <div className="relative w-[1000] ">
+        <div className="flex  items-center">
+          <div className="relative justify-between w-[1000] ">
             <Image
               src={MapMicro.displayIcon}
               alt="VALORANT"
@@ -33,8 +33,8 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
               className=" w-full h-auto"
             />
           </div>
+           <MapsRecomendparts MapsRecomend={MapsRecomend} />
         </div>
-        <MapsRecomendparts MapsRecomend={MapsRecomend} />
       </div>
 
     </>
