@@ -28,6 +28,7 @@ export default async function Chracter({ params }: EgentPromise) {
   const Egentinfo = json.data
   const MapAgentInfo: string = Egentinfo.displayName
   const MapOfAgent = AgentMapPattern[MapAgentInfo].maps
+  console.log(MapOfAgent.map(item => item.splash))
 
   console.log(MapOfAgent)
   return (
@@ -80,14 +81,15 @@ export default async function Chracter({ params }: EgentPromise) {
               <Link
                 href={`${basepatMap}/${item.uuid}`}
                 key={item.uuid}
-                className="relative rounded-3xl w-[800px] h-[200px] block"
-                style={{
-                  backgroundImage: `url(${item.splash})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  minHeight: "200px",
-                }}
+                className="relative rounded-3xl w-[800px] h-[200px] block overflow-hidden"
               >
+                <Image
+                  src={item.splash}
+                  alt={item.displayName}
+                  width={800}
+                  height={200}
+                  className="object-cover rounded-3xl"
+                />
                 <h1 className="text-white text-3xl absolute top-4 left-4">{item.displayName}</h1>
               </Link>
             )
