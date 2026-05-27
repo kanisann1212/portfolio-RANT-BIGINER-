@@ -21,7 +21,7 @@ export default async function Guns() {
     <>
       <Header />
       <MIBAE gazou="/FIRE.jpg" syubun="エイムはすべての人に与えられた平等の力です。" hukubun="適切な武器と完璧なエイムで相手を叩き潰しましょう" kime="ーBring it onー" />
-      <div className="bg-[url(/GANBG.jpg)]  bg-no-repeat bg-[length:100%] h-[1600px] mask-t-from-80% relative mask-b-from-90% ">
+      <div className="bg-[url(/GANBG.jpg)]  bg-no-repeat bg-cover min-h-screen  mask-t-from-80% relative mask-b-from-90% ">
         <div className="absolute top-100">
           <div
             className="grid gap-22 ml-2"
