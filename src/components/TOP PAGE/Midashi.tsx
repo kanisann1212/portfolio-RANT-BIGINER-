@@ -10,7 +10,7 @@ const MotionLink = motion.create(Link)
 export const Midashi = ({ midashi, src, page }: midashiProps) => {
   const linkVariants = {
     initial: {},
-    hover: {}
+    hover: {scale:1.1}
   }
 
   const textVariants = {
@@ -20,9 +20,9 @@ export const Midashi = ({ midashi, src, page }: midashiProps) => {
 
 
   return (
-    <motion.div
+    <div
       className="h-full rounded-3xl "
-      whileHover={{ color: "#ff0000" }}>
+      >
       <MotionLink
         href={page}
         key={midashi}
@@ -43,6 +43,6 @@ export const Midashi = ({ midashi, src, page }: midashiProps) => {
           variants={textVariants}
         >{midashi}</motion.h1>
       </MotionLink>
-    </motion.div>
+    </div>
   )
 }
