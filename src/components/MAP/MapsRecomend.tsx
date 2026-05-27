@@ -15,19 +15,21 @@ const basepath = "/egents"
 
 export const MapsRecomendparts = ({ MapsRecomend }: MapsRecomendProps) => {
   return (
-    <div className="grid grid-cols-[450_450_450]">
+    <div className="grid grid-cols-3">
       {MapsRecomend.map((recomend) => {
         return (
-          <Link 
-          className="flex flex-col items-center w-[450px] h-[450px]" 
-          key={recomend.uuid}
-         href={`${basepath}/${recomend.uuid}`}
-         >
+          <Link
+            className="flex flex-col items-center w-[450px] h-[450px]"
+            key={recomend.uuid}
+            href={`${basepath}/${recomend.uuid}`}
+          >
             <div className="relative w-[450px] h-[450px]">
               <Image
                 src={recomend.fullPortrait}
                 alt="VALORANT"
-                fill
+                width={450}
+                height={450}
+                sizes="450px"
                 className="object-cover bg-no-repeat"
                 style={{
                   backgroundImage: `url(${recomend.roleIcon})`,

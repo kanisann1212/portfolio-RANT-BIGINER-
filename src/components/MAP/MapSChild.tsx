@@ -18,7 +18,7 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
           backgroundImage: `url(${MapMicro.stylizedBackgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "200px",
+           minHeight: "100vh",
         }}
       >
         <Header Hanten={true} />
