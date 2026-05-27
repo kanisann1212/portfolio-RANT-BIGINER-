@@ -23,7 +23,7 @@ export default async function Gun({ params }: GunPromise) {
   const WeponPattern :Weponpattern = {
     Vandal:{Windex:8},
     Odin:{Windex:31},
-    Ares:{Windex:8},
+    Ares:{Windex:3},
     Bulldog:{Windex:1},
     Phantom:{Windex:87},
     Judge:{Windex:7},

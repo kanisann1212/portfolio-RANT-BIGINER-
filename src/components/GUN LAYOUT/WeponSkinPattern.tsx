@@ -8,7 +8,7 @@ type Props = {
 
 export const WeponSkinPatternLayout = ({ Guninfo, Windex }: Props) => {
   const Gaia1 = Guninfo.skins[Windex]
-  const Gaia2 = Gaia1.chromas[1]
+  const Gaia2 = Gaia1.chromas[1] 
   console.log(Guninfo)
   return (
     <>
@@ -26,6 +26,7 @@ export const WeponSkinPatternLayout = ({ Guninfo, Windex }: Props) => {
       <div className="absolute bottom-10">
         <div className="flex flex-col">
           <h1 className="text-7xl mb-10 ml-10" >{Guninfo.displayName}</h1>
+          {Guninfo.weaponStats &&(
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 ">
             <div className="backdrop-blur-sm">
               <Gauge value={Guninfo.weaponStats.magazineSize} max={100} label="magazinsizeー装填段数" />
@@ -40,6 +41,7 @@ export const WeponSkinPatternLayout = ({ Guninfo, Windex }: Props) => {
               <Gauge value={Guninfo.weaponStats.fireRate} max={16} label="fireRateー発射レート" />
             </div>
           </div>
+          )}
         </div>
       </div>
     </>
