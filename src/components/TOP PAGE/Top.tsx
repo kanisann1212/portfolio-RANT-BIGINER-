@@ -1,6 +1,6 @@
 import { User } from "lucide-react"
 import { Video } from "@/components/TOP PAGE/Video";
-import { Midashi } from "@/components/MAP/Midashi";
+import { Midashi } from "@/components/TOP PAGE/Midashi";
 import Image from "next/image";
 import { MIBAE } from "./MIBAE";
 

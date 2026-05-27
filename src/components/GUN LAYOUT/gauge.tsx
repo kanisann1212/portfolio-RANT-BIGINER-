@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react"
-import { motion, useTransform, animate, useMotionValue } from "framer-motion"
+import { motion, animate, useMotionValue } from "framer-motion"
 
 type GaugeProps = {
   label: string,
