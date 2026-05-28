@@ -1,7 +1,7 @@
 import { AnimationGunlist } from "@/components/animation/AnimationGunlist"
 import { Header } from "@/components/TOP PAGE/Header"
 import { MIBAE } from "@/components/TOP PAGE/MIBAE"
-import type { SkinLevels, WeponType, Skined } from "@/types/type"
+import type { WeponType, Skined } from "@/types/type"
 type Wepondata ={
   data:WeponType[]
 }
@@ -20,10 +20,7 @@ export default async function Guns() {
     <>
       <Header />
       <MIBAE gazou="/FIRE.jpg" syubun="エイムはすべての人に与えられた平等の力です。" hukubun="適切な武器と完璧なエイムで相手を叩き潰しましょう" kime="ーBring it onー" />
-      <div className="bg-[url(/GANBG.jpg)]  bg-no-repeat bg-cover min-h-screen  mask-t-from-80% relative mask-b-from-90% ">
       <AnimationGunlist filterdWeponSkin={filterdWeponSkin} />
-
-      </div>
     </>
   )
 }
