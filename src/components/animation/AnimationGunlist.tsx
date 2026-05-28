@@ -39,7 +39,7 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
   }
 
   return (
-    <div className="w-full bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 ">
+    <div className="w-full mask-t-from-80% mask-b-from-90% bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 ">
       <Ticker duration={30}>
         {filterdWeponSkin.map((wepon) => (
           <MotionLink
@@ -52,7 +52,7 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
           >
             <div
               style={{ width: "300px", height: "600px", position: "relative" }}
-              className="overflow-hidden backdrop-blur-xl border rounded-3xl flex items-center justify-center"
+              className="overflow-hidden backdrop-blur-xl border rounded-3xl flex items-center justify-center mt-10 mb-10 "
             >
               <MotionImage
                 src={wepon.displayIcon}
