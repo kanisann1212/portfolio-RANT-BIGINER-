@@ -1,22 +1,63 @@
+'use client'
 import type { Agent } from "@/types/type"
 import type { AProps } from "@/types/type"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
-export const DUE = ({A}:AProps) =>{
+const variants = {
+  initial: { x: -2000, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+}
+const MotionLink = motion.create(Link)
+const linkVariants = {
+  initial: { opacity: 0, y: 200 },
+  hover: { scale: 1.1 },
+  transition: {
+    duration: 1.5
+  }
+}
+
+export const DUE = ({ A }: AProps) => {
   const basepath = "/egents"
-  return(
+  return (
     <>
-      <div className="relative bg-[url(/JETT.jpg)] bg-size-[auto_px] mask-b-from-80% bg-no-repeat mask-t-from-70%"
+      <motion.div
+        className="relative mask-b-from-80% mask-t-from-70% h-[500px]"
+        initial='initial'
+        whileInView="animate"
+        variants={variants}
+        viewport={{ once: true }}
+        transition={{
+          type: 'spring',
+          stiffness: 100,
+          damping: 10,
+          mass: 1,
+          duration: 1
+        }}
       >
-        <h1 className="text-black text-8xl absolute left-235 top-50">DUELIST</h1>
+        <Image
+          src="/JETT.jpg"
+          alt="background"
+          fill
+          className="object-cover -z-10 "
+          style={{ objectPosition: "0% 0%" }}
+        />
+        <h1
+          className="text-black text-8xl absolute left-320 top-50 z-10"
+          style={{ right: "500px", top: "200px" }}
+        >DUELIST</h1>
         <div className="grid  h-[500px] "
           style={{ gridTemplateColumns: 'repeat(8,110px)' }}>
           {A.map((sen: Agent) => {
             return (
-              <Link
+              <MotionLink
                 key={sen.uuid}
                 className="text-black"
+                variants={linkVariants}
+                initial="initial"
+                whileHover="hover"
+                whileInView={{ opacity: 1, y: 0 }}
                 href={`${basepath}/${sen.uuid}`}
               >
                 <div className="relative h-[500px] overflow-hidden border-4 border-white">
@@ -27,11 +68,11 @@ export const DUE = ({A}:AProps) =>{
                     className="object-cover"
                   />
                 </div>
-              </Link>
+              </MotionLink>
             )
           })}
         </div>
-        </div>
+      </motion.div>
     </>
   )
 }

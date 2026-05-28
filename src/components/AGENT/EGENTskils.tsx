@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Dela_Gothic_One } from "next/font/google"
+import ScrambleText from "../animation/ScrambleText"
 
 const valorantEgent = Dela_Gothic_One({
   weight: "400",
@@ -24,7 +25,9 @@ export const EgentSkils = ({ Icon,Name,description }: Eprops) => {
           className="object-cover"
         />
       </div>
-      <h1 className={`${valorantEgent.className} border-b border-white text-center text-4xl font-bold col-span-2 p-10`}>{Name}</h1>
+      <ScrambleText className={`${valorantEgent.className} border-b border-white text-center text-4xl font-bold col-span-2 p-10 block`}>
+        {Name}
+      </ScrambleText>
       <p className="col-span-2 text-center pt-5 ">{description}</p>
     </div>
   )
