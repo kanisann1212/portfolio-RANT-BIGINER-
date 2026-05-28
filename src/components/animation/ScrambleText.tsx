@@ -1,29 +1,75 @@
-'use client'
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin"
+"use client";
 
-gsap.registerPlugin(ScrambleTextPlugin)
+import React, { useRef, useState,useEffect } from "react";
+import { motion } from "framer-motion";
+import { Dela_Gothic_One } from "next/font/google"
 
-export const ScrambleText = ({ children, className }: { children: React.ReactNode, className?: string }) => {
-  const ref = useRef<HTMLDivElement>(null)
+const CYCLES_PER_LETTER = 7;
+const SHUFFLE_TIME = 50;
+const CHARS = "!@#$%^&*():{};|,.<>/?";
 
-  useEffect(() => {
-    if (!ref.current) return
-    
-    gsap.to(".scrambleText", {
-      duration: 2,
-      scrambleText: {
-        text: "{original}",
-        chars: "upperCase",
-        speed: 0.5,
+const valorantEgent = Dela_Gothic_One({
+  weight: "400",
+  subsets: ["latin"]
+})
+
+
+type Props = {
+  children: string,
+  className?:string,
+};
+
+const ScrambleText: React.FC<Props> = ({ children,className }) => {
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const TARGET_TEXT = children ?? "" 
+  const ref = useRef<HTMLSpanElement>(null)
+
+  const [text, setText] = useState(TARGET_TEXT);
+useEffect(() => {
+  scramble() 
+}, [])
+
+  const scramble = () => {
+    let pos = 0;
+
+    intervalRef.current = setInterval(() => {
+      const scrambled = TARGET_TEXT.split("")
+        .map((char, index) => {
+          if (pos / CYCLES_PER_LETTER > index ) {
+            return char;
+          }
+
+          const randomCharIndex = Math.floor(Math.random() * CHARS.length);
+          const randomChar = CHARS[randomCharIndex];
+
+          return randomChar;
+        })
+        .join("");
+
+      setText(scrambled);
+      pos++;
+
+      if (pos >= TARGET_TEXT.length * CYCLES_PER_LETTER) {
+        stopScramble();
       }
-    })
-  }, [])
+    }, SHUFFLE_TIME);
+  };
+
+  const stopScramble = () => {
+    clearInterval(intervalRef.current as NodeJS.Timeout);
+    setText(TARGET_TEXT);
+  };
 
   return (
-    <div ref={ref} className={className}>
-      {children}
-    </div>
-  )
-}
+    <motion.div
+      whileTap={{
+        scale: 0.975,
+      }}
+      className={className}
+    >
+      {text}
+    </motion.div>
+  );
+};
+
+export default ScrambleText;
