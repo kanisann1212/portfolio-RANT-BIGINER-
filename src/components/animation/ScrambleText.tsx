@@ -4,7 +4,7 @@ import React, { useRef, useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { Dela_Gothic_One } from "next/font/google"
 
-const CYCLES_PER_LETTER = 7;
+const CYCLES_PER_LETTER = 6.5;
 const SHUFFLE_TIME = 50;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
