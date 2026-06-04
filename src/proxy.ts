@@ -1,4 +1,4 @@
-import { auth } from "@/auth"
+import { auth } from "./auth"
 import { NextResponse } from "next/server"
 
 export const proxy = auth((req)=>{
@@ -9,7 +9,7 @@ export const proxy = auth((req)=>{
     return NextResponse.redirect(new URL("/mypage",req.nextUrl.origin))
   }
   if(!isLogIn && req.nextUrl.pathname.startsWith("/mypage")){
-    return NextResponse.redirect(new URL("/login",req.nextUrl.origin))
+    return NextResponse.redirect(new URL("/login",req.nextUrl.origin))  
   }
 })
 
