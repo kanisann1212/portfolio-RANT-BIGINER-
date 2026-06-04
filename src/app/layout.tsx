@@ -1,6 +1,7 @@
 import type { Metadata,Viewport } from "next";
 import { Geist, Geist_Mono,Archivo_Black,Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
+import { SessionProvider } from "next-auth/react"
 
 const valorant = Archivo_Black({
   weight :"400",
@@ -39,7 +40,11 @@ export default function RootLayout({
       lang="ja"
       className={`${valorant.className} h-full antialiased`} 
     >
-      <body className="min-h-full flex flex-col bg-white p-0 m-0">{children}</body>
+      <body className="min-h-full flex flex-col bg-white p-0 m-0">
+        <SessionProvider>
+        {children}
+        </SessionProvider>
+        </body>
     </html>
   );
 }
