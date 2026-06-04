@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "media.valorant-api.com",
       },
+          {
+      protocol: "https",
+      hostname: "cdn.discordapp.com", 
+    },
     ],
   },
 };
