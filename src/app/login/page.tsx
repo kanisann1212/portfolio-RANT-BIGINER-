@@ -1,7 +1,7 @@
 
-import { Button } from "@/components/ui/button";
 import { DiscordSignIn } from "@/components/session/DiscordsignIn";
 import { DiscordLogoIcon,InstagramLogoIcon } from "@radix-ui/react-icons";
+import { GoogleSignIn } from "@/components/session/Googlesignin";
 
 export default function Mypage (){
   return(
@@ -9,7 +9,7 @@ export default function Mypage (){
       <div className="font-extrabold text-5xl">Start your game</div>
        <div>あなたのだけの物語を始めましょう</div>
     <DiscordSignIn />
-     <Button className="w-[100px] h-[50px] text-[20px]">google</Button>
+    <GoogleSignIn/>
      <div className="underline ">アカウントを持っていませんか？</div>
     </div>
   )
