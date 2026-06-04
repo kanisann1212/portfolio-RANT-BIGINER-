@@ -9,6 +9,10 @@ export const {handlers,auth,signIn,signOut} =NextAuth ({
       clientId: process.env.AUTH_DISCORD_ID as string,
       clientSecret: process.env.AUTH_DISCORD_SECRET as string
     }),
+    Google({
+      clientId:process.env.AUTH_GOOGLE_ID as string,
+      clientSecret:process.env.AUTH_GOOGLE_SECRET as string
+    })
   ],
   pages:{
     signIn:"/login", 
