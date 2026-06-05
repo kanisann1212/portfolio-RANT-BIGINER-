@@ -23,7 +23,6 @@ export default async function Egents() {
     .filter((EGEN: Agent) => EGEN.role.displayName === "デュエリスト")
   const controller = json.data
     .filter((EGEN: Agent) => EGEN.role.displayName === "コントローラー")
-  console.log(Sentinel)
   return (
     <>
       <Header />

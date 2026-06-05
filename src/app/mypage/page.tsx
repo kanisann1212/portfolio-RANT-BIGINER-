@@ -5,13 +5,13 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Header } from "@/components/TOP PAGE/Header";
+import { SelectAgent } from "@/components/session/SelectAgent";
 
 
 export default async function Mypage() {
@@ -49,6 +49,7 @@ export default async function Mypage() {
             </form>
           </DrawerHeader>
           <DrawerFooter>
+            <SelectAgent />
             <Button>Submit</Button>
             <DrawerClose>
               <Button variant="outline">Cancel</Button>
