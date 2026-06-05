@@ -37,10 +37,16 @@ export default async function Mypage() {
           </DrawerTrigger>
         </div>
         <DrawerContent
-          className="h-[500px] ">
+          className="h-[700px] ">
           <DrawerHeader>
-            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerTitle className="text-2xl font-bold">CREATE YOUR VIDEO</DrawerTitle>
+            <form>
+              <textarea 
+              id="title" 
+              autoFocus 
+              placeholder="Video Title" 
+              className="w-full resize-none overflow-hidden bg-transparent text-4xl focus:outline-none font-extrabold"></textarea>
+            </form>
           </DrawerHeader>
           <DrawerFooter>
             <Button>Submit</Button>
