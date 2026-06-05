@@ -32,7 +32,7 @@ export const Intro = ({ children }: { children: React.ReactNode }) => {
               transition: { duration: 1, ease: "easeInOut" }
             }}
           >
-            <ScrambleText className={"text-3xl"}>RANT BEGINNER</ScrambleText>
+            <ScrambleText className={"text-3xl text-white"}>RANT BEGINNER</ScrambleText>
           </motion.div>
         )}
       </AnimatePresence>

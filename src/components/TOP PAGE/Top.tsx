@@ -6,23 +6,25 @@ import Image from "next/image";
 import { MIBAE } from "./MIBAE";
 import { motion } from "framer-motion"
 import Link from "next/link";
+import { useSession, SessionProvider } from "next-auth/react"
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
-const MotionLink = motion.create(Link)
+const MotionUser = motion.create(User)
+const MotionAvatar = motion.create(Avatar)
 
-  const linkVariants = {
-    initial: { opacity: 1, y: 0 },
-    hover: { scale: 1.5 },
-    transition: {
-      duration: 1.5
-    }
-  }
 
 export const Top = () => {
+  const { data: session } = useSession()
   return (
     <>
       <Video />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <h1 className={'font-bold text-white italic text-center text-9xl '}>RANT BEGINNER</h1>
+        <h1 className={'font-bold text-white italic text-center text-9xl '}>RANT BEGINNER</h1>
       </div>
       <div className="fixed left-10 top-10 " >
         <Image
@@ -34,16 +36,31 @@ export const Top = () => {
         />
       </div>
       <div className="fixed top-10 right-10" >
-        <MotionLink
-          href="/mypage"
-          variants={linkVariants}
-          initial="initial"
-          whileHover="hover"
-        >
-        <User className="w-10 h-10 text-white" />
-        </MotionLink>
+        <SessionProvider>
+          {session?.user ?
+            <Link href="/mypage">
+              <MotionAvatar
+                initial={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.5 }}
+              >
+                <AvatarImage src={session.user.image ?? "https://github.com/shadcn.png"} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+                <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+              </MotionAvatar>
+            </Link>
+            :
+            <Link
+              href="/mypage"
+            >
+              <MotionUser
+                className="w-10 h-10 text-white"
+                initial={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.5 }}
+              />
+            </Link>}
+        </SessionProvider>
       </div>
-        <MIBAE syubun="このサイトは初心者である方全員に向けて作りました。" hukubun="どうかこのサイトがあなたのバロ人生の糧になることを祈っております。" kime="ーFOR YOUー" gazou="/kai.jpg"/>
+      <MIBAE syubun="このサイトは初心者である方全員に向けて作りました。" hukubun="どうかこのサイトがあなたのバロ人生の糧になることを祈っております。" kime="ーFOR YOUー" gazou="/kai.jpg" />
       <div className="grid grid-cols-3 gap-10 m-15 mr-20 ml-20 h-[80vh]">
         <div className="h-full">
           <Midashi

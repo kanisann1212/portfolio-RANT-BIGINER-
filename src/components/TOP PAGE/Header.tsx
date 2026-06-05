@@ -4,9 +4,16 @@ import Link from "next/link"
 import Image from "next/image"
 import { User } from "lucide-react"
 import { motion } from "framer-motion"
+import { useSession, SessionProvider } from "next-auth/react"
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 const MotionLink = motion.create(Link)
-
+const MotionAvatar = motion.create(Avatar)
 
 type WhiteProps = {
   Hanten?: boolean
@@ -15,6 +22,7 @@ type WhiteProps = {
 
 
 export const Header = ({ Hanten }: WhiteProps) => {
+  const { data: session } = useSession()
   const textVariants = {
     initial: { color: Hanten ? 'white' : 'black' },
     hover: { color: "#ff0000" },
@@ -90,7 +98,33 @@ export const Header = ({ Hanten }: WhiteProps) => {
           initial="initial"
           whileHover="hover"
         >EGENT</MotionLink>
-        <User className="w-10 h-10 " />
+        <SessionProvider>
+          {session?.user ?
+            <MotionLink
+              href="/mypage"
+              className={`${Hanten ? "text-white " : "text-black"} text-3xl `}
+              variants={linkVariants}
+              initial="initial"
+              whileHover="hover"
+            >
+              <Avatar>
+                <AvatarImage src={session.user.image ?? "https://github.com/shadcn.png"} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+                <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+              </Avatar>
+            </MotionLink>
+            :
+            <MotionLink
+              href="/mypage"
+              className={`${Hanten ? "text-white " : "text-black"} text-3xl `}
+              variants={linkVariants}
+              initial="initial"
+              whileHover="hover"
+            >
+              <User className="w-10 h-10 " />
+            </MotionLink>}
+        </SessionProvider>
+
       </div>
     </div>
   )
