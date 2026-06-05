@@ -2,6 +2,7 @@ import { auth } from "./auth"
 import { NextResponse } from "next/server"
 
 export const proxy = auth((req)=>{
+  console.log("動いてる")
   const isLogIn = !!req.auth
   const isLoginPage = req.nextUrl.pathname === "/login"
 
