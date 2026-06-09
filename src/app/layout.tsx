@@ -2,6 +2,7 @@ import type { Metadata,Viewport } from "next";
 import { Geist, Geist_Mono,Archivo_Black,Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react"
+import { Toaster } from "@/components/ui/sonner"
 
 const valorant = Archivo_Black({
   weight :"400",
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-white p-0 m-0 ">
         <SessionProvider>
         {children}
+        <Toaster />
         </SessionProvider>
         </body>
     </html>
