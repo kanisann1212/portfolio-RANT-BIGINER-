@@ -1,6 +1,7 @@
 import { auth } from "../../auth"
 import Image from "next/image"
 import { Header } from "@/components/TOP PAGE/Header";
+import { CreateVideo } from "@/components/session/CreateVideo";
 
 
 export default async function Mypage() {
@@ -17,6 +18,7 @@ export default async function Mypage() {
           height={300}
           className="object-cover rounded-full "
         />
+        <CreateVideo />
       </div>
     </div>
 
