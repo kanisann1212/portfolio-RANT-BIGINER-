@@ -99,6 +99,7 @@ export type Agent = {
   role:role
   background: string,
   abilities:skils[]
+  fullPortrait: string
 }
 
 export type role = {
@@ -144,8 +145,8 @@ export type AgentTypeInfo = {
   killfeedPortrait: string
   minimapPortrait: string
   characterTags: string[] | null
-  role: Role        // ← ネストしたオブジェクト
-  abilities: Ability[]  // ← オブジェクトの配列
+  role: Role       
+  abilities: Ability[] 
   isPlayableCharacter: boolean
   isBaseContent: boolean
   isAvailableForTest: boolean
