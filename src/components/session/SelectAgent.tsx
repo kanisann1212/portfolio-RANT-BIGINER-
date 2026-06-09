@@ -12,48 +12,67 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import type { VideoFormData } from "./CreateVideo"
+import { useEffect, useState } from "react"
 
 type Egentdata = {
   data: Agent[]
 }
 
 type Props = {
-  control : Control<VideoFormData>
+  control: Control<VideoFormData>
 }
-const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
-const json: Egentdata = await res.json()
-export const AgentSelectData = json.data
 
-export const SelectAgent = async ({control}:Props) => {
-  const selectedName = useWatch({control,name:"agent"})
-  const
+
+export const SelectAgent = ({ control }: Props) => {
+  const [agents, setAgents] = useState<Agent[]>([])
+  useEffect(() => {
+    const fetchAgent = async() =>{ 
+     const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
+     const json: Egentdata = await res.json()
+    setAgents(json.data)
+  }
+  fetchAgent()
+  },[])
+  const selectedName = useWatch({ control, name: "agent" })
+  const selectedAgent = agents.find(
+    (a) => a.displayName === selectedName
+  )
   return (
-    <Controller 
-    name="agent"
-    control={control}
-    render={({field})=>(
-    <Select>
-      <SelectTrigger className="w-[800px]  font-extrabold text-2xl">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Agents</SelectLabel>
-          {AgentSelectData.map((agent: Agent) => {
-            return (
-              <SelectItem
-                value={agent.displayName}
-                key={agent.uuid}
-              >
-                {agent.displayName}
-              </SelectItem>
-            )
-          })}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-    )}
-    />
-
+    <div>
+      <Controller
+        name="agent"
+        control={control}
+        render={({ field }) => (
+          <Select onValueChange={field.onChange} value={field.value}>
+            <SelectTrigger className="w-[400px]  font-extrabold text-2xl">
+              <SelectValue placeholder="Select Agent" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Agents</SelectLabel>
+                {agents.map((agent: Agent) => {
+                  return (
+                    <SelectItem
+                      value={agent.displayName}
+                      key={agent.uuid}
+                    >
+                      {agent.displayName}
+                    </SelectItem>
+                  )
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        )}
+      />
+      {selectedAgent && (
+      <Image 
+      src = {selectedAgent?.fullPortrait}
+      alt = {selectedAgent?.displayName}
+      width={400}
+      height={150}
+      />
+  )}
+    </div>
   )
 }
