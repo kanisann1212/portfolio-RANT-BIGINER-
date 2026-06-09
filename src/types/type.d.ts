@@ -1,4 +1,16 @@
+export type RANKjson = Array<{
+  uuid:string,
+  tiers:RANKtire[]
+}>
 
+type RANKtire = {
+  tier:number,
+  tierName:string,
+  divisionName:string,
+  color:string,
+  largeIcon:string,
+  smallIcon:string,
+}
 
 export type midashiProps = {
   midashi: string,

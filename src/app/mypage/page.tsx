@@ -3,27 +3,75 @@ import Image from "next/image"
 import { Header } from "@/components/TOP PAGE/Header";
 import { CreateVideo } from "@/components/session/CreateVideo";
 import { prisma } from "@/lib/prisma"
+import { RANKjson } from "@/types/type";
+type RANKdata = {
+  data: RANKjson
+}
+
+const getRank = (count: number) => {
+  if (count >= 100) return 27
+  if (count >= 90) return 26
+  if (count >= 80) return 23
+  if (count >= 60) return 20
+  if (count >= 40) return 17
+  if (count >= 30) return 14
+  if (count >= 15) return 11
+  if (count >= 10) return 8
+  return 5
+}
 
 
 export default async function Mypage() {
   const session = await auth()
-  const Video = await prisma.video.findMany()
-  console.log (Video)
-  // すべてのでーたは同じデータテーブルに管理されるのか、一旦ログアウトして確認
+  const res = await fetch("https://valorant-api.com/v1/competitivetiers")
+  const json: RANKdata = await res.json()
+  const RANKD = json.data
+  const RANK = {
+    ...RANKD[4],
+    tiers: RANKD[4].tiers.filter((RAN) =>
+      RAN.tierName.includes("3") || RAN.tierName.includes("RADIANT")
+    ),
+  }
+
+  const Video = await prisma.video.findMany({
+    where: { userId: session?.user.id },
+  })
+  const VideoRank: number = Video.length
+  const VRank: number = getRank(VideoRank)
+  const VTier = RANK.tiers.find((t) => t.tier === VRank)
+  console.log(VTier)
+
+
+
   return (
     <div>
       <Header />
-      <div>
-        <h1 className="text-6xl font-extrabold">ようこそ{session?.user.name}</h1>
-        <Image
-          src={session?.user.image}
-          alt="VALORANT"
-          width={300}
-          height={300}
-          className="object-cover rounded-full "
-        />
-        <CreateVideo />
+      <div 
+      style={{ backgroundColor: `#${VTier?.color}` }}
+      className="flex justify-between  items-center p-20 mask-b-from-90% mask-t-from-90%">
+        <div className="flex items-center gap-5">
+          <Image
+            src={session?.user.image}
+            alt="VALORANT"
+            width={150}
+            height={150}
+            className="object-cover rounded-full "
+          />
+          <h1 className="text-8xl font-extrabold">{session?.user.name}</h1>
+        </div>
+        <div className="flex">
+          {VTier && (
+            <Image
+              src={VTier.largeIcon}
+              alt={VTier.tierName}
+              width={150}
+              height={150}
+            />
+          )}
+        <h1 className="text-9xl font-extrabold text-white ">{VTier?.divisionName}</h1>
+        </div>
       </div>
+      <CreateVideo />
     </div>
 
   )
