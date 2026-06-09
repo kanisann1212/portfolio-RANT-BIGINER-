@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma"
 import { z, ZodError } from "zod"
 
 const videoshema = z.object({
-  id:z.string(),
   url:z.url(),
   title:z.string().min(1),
   agent:z.string(),
@@ -21,10 +20,9 @@ export async function POST(req:NextRequest){
     const {user} = session
     const json = await req.json()
     const body = videoshema.parse(json)
-    const {id,url,title,agent,map} = body
+    const {url,title,agent,map} = body
     const video = await prisma.video.create({
       data:{
-        id,
         url,
         title,
         agent,
