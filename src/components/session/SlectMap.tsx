@@ -39,14 +39,14 @@ export const SelectMap = ({ control }: Props) => {
     (a) => a.displayName === selectedName
   )
   return (
-    <div>
+    <div className="relative w-[500px] h-[250px]">
       <Controller
         name="map"
         control={control}
         render={({ field }) => (
           <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger className="w-[400px]  font-extrabold text-2xl">
-              <SelectValue placeholder="Select Agent" />
+              <SelectValue placeholder="Select Map" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -70,8 +70,7 @@ export const SelectMap = ({ control }: Props) => {
         <Image
           src={selectedMap?.splash}
           alt={selectedMap?.displayName}
-          width={400}
-          height={150}
+          fill
           className="rounded-3xl mt-20"
         />
       )}
