@@ -2,10 +2,14 @@ import { auth } from "../../auth"
 import Image from "next/image"
 import { Header } from "@/components/TOP PAGE/Header";
 import { CreateVideo } from "@/components/session/CreateVideo";
+import { prisma } from "@/lib/prisma"
 
 
 export default async function Mypage() {
   const session = await auth()
+  const Video = await prisma.video.findMany()
+  console.log (Video)
+  // すべてのでーたは同じデータテーブルに管理されるのか、一旦ログアウトして確認
   return (
     <div>
       <Header />
