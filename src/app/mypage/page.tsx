@@ -4,6 +4,8 @@ import { Header } from "@/components/TOP PAGE/Header";
 import { CreateVideo } from "@/components/session/CreateVideo";
 import { prisma } from "@/lib/prisma"
 import { RANKjson } from "@/types/type";
+import { KAISETSU } from "@/components/TOP PAGE/KAISETSU";
+import { DBsumnail } from "@/components/session/DBsumnail";
 type RANKdata = {
   data: RANKjson
 }
@@ -39,16 +41,16 @@ export default async function Mypage() {
   const VideoRank: number = Video.length
   const VRank: number = getRank(VideoRank)
   const VTier = RANK.tiers.find((t) => t.tier === VRank)
-  console.log(VTier)
+  console.log(Video)
 
 
 
   return (
     <div>
       <Header />
-      <div 
-      style={{ backgroundColor: `#${VTier?.color}` }}
-      className="flex justify-between  items-center p-20 mask-b-from-90% mask-t-from-90%">
+      <div
+        style={{ backgroundColor: `#${VTier?.color}` }}
+        className="flex justify-between  items-center p-20 mask-b-from-90% mask-t-from-90%">
         <div className="flex items-center gap-5">
           <Image
             src={session?.user.image}
@@ -68,10 +70,25 @@ export default async function Mypage() {
               height={150}
             />
           )}
-        <h1 className="text-9xl font-extrabold text-white ">{VTier?.divisionName}</h1>
+          <h1 className="text-9xl font-extrabold text-white ">{VTier?.divisionName}</h1>
         </div>
       </div>
+      <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANK UP!!.png" />
       <CreateVideo />
+
+      <div className="grid grid-cols-5">
+        {Video.map((v) => {
+          return (
+            <div className=" w-[500px] h-[600px]">
+              <div className="flex flex-col items-center gap-5">
+                <DBsumnail url={v.url} />
+                <h1 className="text-3xl font-bold">{v.title}</h1>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
     </div>
 
   )
