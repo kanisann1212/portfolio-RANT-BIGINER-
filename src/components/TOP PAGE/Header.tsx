@@ -16,7 +16,7 @@ const MotionLink = motion.create(Link)
 const MotionAvatar = motion.create(Avatar)
 
 type WhiteProps = {
-  Hanten?: boolean
+  Hanten?: boolean,
 }
 
 
