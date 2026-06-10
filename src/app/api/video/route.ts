@@ -1,14 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { z, ZodError } from "zod"
-
-const videoshema = z.object({
-  url:z.url(),
-  title:z.string().min(1),
-  agent:z.string(),
-  map:z.string(),
-})
+import { z ,ZodError } from "zod"
+import { videoshema } from "@/lib/shema"
 
 export async function POST(req:NextRequest){
   try{
