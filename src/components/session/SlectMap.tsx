@@ -1,4 +1,4 @@
-import type { Agent } from "@/types/type"
+'use client'
 import { Controller, useWatch } from "react-hook-form"
 import Image from "next/image"
 import { Control } from "react-hook-form"
