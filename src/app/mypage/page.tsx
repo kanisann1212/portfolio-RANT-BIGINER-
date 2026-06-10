@@ -60,7 +60,7 @@
           className="flex justify-between  items-center p-20 mask-b-from-90% mask-t-from-90%">
           <div className="flex items-center gap-5">
             <Image
-              src={session?.user.favoriteAgent?EgentIcon1:session?.user.image}
+              src={(session?.user.favoriteAgent?EgentIcon1:session?.user.image)??""}
               alt="VALORANT"
               width={150}
               height={150}
@@ -87,7 +87,7 @@
             return (
               <div className=" w-[500px] h-[400px]" key={v.id}>
                 <div className="flex flex-col items-center justify-ceter gap-2 ">
-                  <DBsumnail url={v.url} EgentIcoN={v.agent} />
+                  <DBsumnail url={v.url} EgentIcoN={v.agent} title={v.title} urlid={v.id}/>
                   <div className="flex items-center gap-4 w-full">
                     <div className="border-t border-black flex-1" />
                   </div>
