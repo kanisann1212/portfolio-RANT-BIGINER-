@@ -25,7 +25,7 @@ export default async function Egents() {
     .filter((EGEN: Agent) => EGEN.role.displayName === "コントローラー")
   return (
     <>
-      <Header />
+      <Header Hanten/>
       <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="/AGENTP.jpg"/>
       <SEN A={Sentinel} />
       <h1 className="text-black text-9xl m-10 text-center"></h1>

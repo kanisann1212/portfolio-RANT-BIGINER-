@@ -47,7 +47,7 @@ export default async function Mypage() {
 
   return (
     <div>
-      <Header />
+      <Header Hanten />
       <div
         style={{ backgroundColor: `#${VTier?.color}` }}
         className="flex justify-between  items-center p-20 mask-b-from-90% mask-t-from-90%">
@@ -61,7 +61,7 @@ export default async function Mypage() {
           />
           <h1 className="text-8xl font-extrabold">{session?.user.name}</h1>
         </div>
-        <div className="flex">
+        <div className="flex ">
           {VTier && (
             <Image
               src={VTier.largeIcon}
@@ -76,19 +76,21 @@ export default async function Mypage() {
       <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANK UP!!.png" />
       <CreateVideo />
 
-      <div className="grid grid-cols-5">
+      {Video ? (<div className="grid grid-cols-5 gap-2">
         {Video.map((v) => {
           return (
-            <div className=" w-[500px] h-[600px]">
-              <div className="flex flex-col items-center gap-5">
+            <div className=" w-[300px] h-[300px] ">
+              <div className="flex flex-col items-center justify-ceter gap-2 ">
                 <DBsumnail url={v.url} />
-                <h1 className="text-3xl font-bold">{v.title}</h1>
+                <div className="flex items-center gap-4 w-full">
+                  <div className="border-t border-black flex-1" />
+                </div>
+                <h1 className=" text-3xl font-bold pb-10">{v.title}</h1>
               </div>
             </div>
           )
         })}
-      </div>
-
+      </div>) : (<h1 className="text-8xl font-extrabold text-center">動画がありません</h1>)}
     </div>
 
   )

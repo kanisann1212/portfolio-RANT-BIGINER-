@@ -46,7 +46,7 @@ export default async function Gun({ params }: GunPromise) {
   console.log(json)
   return (
     <>
-      <Header />
+      <Header Hanten/>
       <div>
         <WeponSkinPatternLayout Guninfo={Weponinfo} Windex={Windex} />
       </div>

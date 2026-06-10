@@ -6,8 +6,8 @@ import { Video } from "@/components/TOP PAGE/Video";
 import { LoginCard } from "@/components/ui/LoginCard";
 export default function Mypage() {
   return (
-    <>
-      <div className="grid grid-cols-2 h-screen w-screen items-center justify-center lg:max-w-none lg:px-0 bg-[url(/AISOLOGIN.jpg)] bg-position-[160px] bg-cover">
+    <div className="bg-white">
+      <div className="grid grid-cols-2 h-screen w-screen items-center justify-center lg:max-w-none lg:px-0 bg-[url(/AISOLOGIN.jpg)] bg-position-[160px] bg-cover ">
         <div className="relative lg:block hidden">
           <Video />
           <h1 className="text-white absolute top-130 left-40 text-8xl">RANT BIGINNER</h1>
@@ -37,6 +37,6 @@ export default function Mypage() {
         </div>
         </div>
   
-    </>
+    </div>
   )
 }

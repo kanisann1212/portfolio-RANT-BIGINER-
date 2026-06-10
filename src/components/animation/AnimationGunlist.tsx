@@ -54,8 +54,8 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
 
   return (
     <>
-    <ScrambleText className={"text-bold text-center text-black text-9xl mb-20"}>WEPONS LIST</ScrambleText>
-      <div className="w-full mask-t-from-80% mask-b-from-90% bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 ">
+    <ScrambleText className={"text-bold text-center  text-9xl mb-20"}>WEPONS LIST</ScrambleText>
+      <div className="w-full mask-t-from-80% mask-b-from-90% bg-[url(/singular.jpg)] bg-position-[160px] bg-cover">
         <Ticker
           duration={30}
           isPlaying={isPlaying}
@@ -70,6 +70,7 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
               initial="initial"
               whileHover="hover"
               style={{ display: "block", flexShrink: 0, margin: "0 12px" }}
+              className="backdrop-blur-2xl"
             >
               <div
                 style={{ width: "300px", height: "600px", position: "relative" }}

@@ -41,7 +41,7 @@ export default function RootLayout({
       lang="ja"
       className={`${valorant.className} h-full antialiased`} 
     >
-      <body className="min-h-full flex flex-col bg-white p-0 m-0 ">
+      <body className="min-h-full flex flex-col bg-black text-white p-0 m-0 ">
         <SessionProvider>
         {children}
         <Toaster position="top-center"/>

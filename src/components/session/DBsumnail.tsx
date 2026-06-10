@@ -10,20 +10,20 @@ const getYoutubeId = (url: string) => {
 }
 
 type Props = {
-  url: string
+  url: string,
 }
 
 export const DBsumnail = ({ url }: Props) => {
   const videoId = getYoutubeId(url)
 
   return (
-    <div className="relative w-full h-[400px]">
+    <div className="relative w-full h-[300px] rounded-2xl">
       {videoId ? (
         <Image
           src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
           alt="サムネイル"
           fill
-          className="object-contain rounded-3xl"
+          className="object-contain rounded-2xl"
         />
       ) : (
         <Image
