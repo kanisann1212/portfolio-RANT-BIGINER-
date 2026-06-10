@@ -1,5 +1,5 @@
 import Image from "next/image"
-
+import type { Agent } from "@/types/type"
 const getYoutubeId = (url: string) => {
   const match = url.match(/[?&]v=([^&]+)/)
   if (match) return match[1]
@@ -11,11 +11,17 @@ const getYoutubeId = (url: string) => {
 
 type Props = {
   url: string,
+  EgentIcoN:string
 }
 
-export const DBsumnail = ({ url }: Props) => {
+type Egentdata = {
+  data: Agent[]
+}
+export const DBsumnail = async({ url,EgentIcoN }: Props) => {
   const videoId = getYoutubeId(url)
-
+  const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
+  const json: Egentdata = await res.json()
+  const EgentIcon2 =json.data.find((a) => a.displayName === EgentIcoN)?.displayIcon ?? ""
   return (
     <div className="relative w-full h-[300px] rounded-2xl">
       {videoId ? (

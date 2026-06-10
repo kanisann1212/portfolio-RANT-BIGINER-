@@ -1,3 +1,4 @@
+"use client"
 import type { Agent } from "@/types/type"
 import { Controller, useWatch } from "react-hook-form"
 import Image from "next/image"
@@ -29,7 +30,7 @@ export const SelectAgent = ({ control }: Props) => {
     const fetchAgent = async() =>{ 
      const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
      const json: Egentdata = await res.json()
-    setAgents(json.data)
+     setAgents(json.data)
   }
   fetchAgent()
   },[])
