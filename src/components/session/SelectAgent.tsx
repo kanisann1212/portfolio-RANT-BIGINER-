@@ -1,4 +1,3 @@
-'use client'
 import type { Agent } from "@/types/type"
 import { Controller, useWatch } from "react-hook-form"
 import Image from "next/image"

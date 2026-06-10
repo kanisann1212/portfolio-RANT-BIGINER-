@@ -67,7 +67,6 @@ export default async function Mypage() {
               src={VTier.largeIcon}
               alt={VTier.tierName}
               width={150}
-              key={VTier.divisionName}
               height={150}
             />
           )}
@@ -77,16 +76,16 @@ export default async function Mypage() {
       <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANK UP!!.png" />
       <CreateVideo />
 
-      {Video ? (
-        <div className="grid lg:grid-cols-5 grid-cols-1 md:grid-cols-2 lg:gap-1">
+      {Video ? (<div className="grid grid-cols-5 gap-2">
         {Video.map((v) => {
           return (
-            <div 
-            className=" w-[490px] h-[300px]"
-            key={v.id}>
+            <div className=" w-[300px] h-[300px] ">
               <div className="flex flex-col items-center justify-ceter gap-2 ">
-                <DBsumnail url={v.url} Agentname={v.agent} title={v.title}/>
+                <DBsumnail url={v.url} />
+                <div className="flex items-center gap-4 w-full">
                   <div className="border-t border-black flex-1" />
+                </div>
+                <h1 className=" text-3xl font-bold pb-10">{v.title}</h1>
               </div>
             </div>
           )
