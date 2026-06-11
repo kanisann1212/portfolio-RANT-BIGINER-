@@ -2,7 +2,6 @@
 
 import { MapType } from "@/types/type"
 import Image from "next/image"
-import { Header } from "../TOP PAGE/Header"
 import { MapsPattern } from "../../data/MapPattern"
 import { MapsRecomendparts } from "./MapsRecomend"
 import { motion } from "framer-motion"
@@ -12,23 +11,19 @@ const variants = {
   animate: { x: 0, opacity: 1 },
 }
 
-export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
+type Props ={
+  MapMicro:MapType,
+
+}
+
+export const MapSChild = ({ MapMicro }: Props) => {
   const MapNameInfo: string = MapMicro.displayName
   const MapsRecomend = MapsPattern[MapNameInfo].agents
   console.log(MapsRecomend)
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${MapMicro.stylizedBackgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          minHeight: "100vh",
-          minWidth: "1400px",
-        }}
-      >
-        <Header  />
+
         <motion.h1
           className="text-9xl"
           initial='initial'
@@ -55,8 +50,6 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
           </div>
           <MapsRecomendparts MapsRecomend={MapsRecomend} />
         </div>
-      </div>
-
     </>
   )
 }

@@ -1,5 +1,5 @@
-import { RankHeader } from "@/data/RANK"
-import { IconHeader } from "@/data/Icon"
+import { RankHeader } from "@/lib/RANK"
+import { IconHeader } from "@/lib/getIconHeader"
 import { HeaderClient } from "./HederCilent"
 export const Header = async() => {
   const Icon = await IconHeader()

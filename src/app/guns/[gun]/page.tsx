@@ -48,7 +48,7 @@ export default async function Gun({ params }: GunPromise) {
     <>
       <Header />
       <div>
-        <WeponSkinPatternLayout Guninfo={Weponinfo} Windex={Windex} />
+        <WeponSkinPatternLayout Guninfo={Weponinfo} Windex={Windex}  />
       </div>
     </>
   )

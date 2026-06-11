@@ -69,7 +69,7 @@ export const CreateVideo = () => {
             <textarea
               id="title"
               autoFocus
-              placeholder="Video Title"
+              placeholder="Video Title("
               {...register("title")}
               className="w-full resize-none overflow-hidden bg-transparent text-4xl focus:outline-none font-extrabold" />
             <textarea

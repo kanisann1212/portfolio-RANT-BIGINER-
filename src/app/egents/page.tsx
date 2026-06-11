@@ -5,6 +5,8 @@ import { SEN } from "@/components/AGENT/SEN"
 import { Header } from "@/components/TOP PAGE/Header"
 import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { Agent } from "@/types/type"
+import { Videodata } from "@/lib/Video"
+import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
 
 type Egentdata = {
   data:Agent[]
@@ -23,10 +25,14 @@ export default async function Egents() {
     .filter((EGEN: Agent) => EGEN.role.displayName === "デュエリスト")
   const controller = json.data
     .filter((EGEN: Agent) => EGEN.role.displayName === "コントローラー")
+  const Video = await Videodata()
   return (
     <>
       <Header />
       <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/AGENTP.jpg"/>
+      {Video.length >= 10 ?
+      (   
+       <>    
       <SEN A={Sentinel} />
       <h1 className="text-black text-9xl m-10 text-center"></h1>
       <DUE A={duelist} />
@@ -34,6 +40,11 @@ export default async function Egents() {
       <INI A={Initiater} />
       <h1 className="text-black text-9xl m-10  text-center"></h1>
       <CONT A={controller} />
+      </>
+      ) 
+      :      
+      <KAISETSU kime="LOCK" syubun="あなたのランクを上げましょう" hukubun="現在機能をロック中です。動画を投稿して機能を開放しましょう" gazou="/RANK UP!!.png" />
+      }
     </>
   )
 }

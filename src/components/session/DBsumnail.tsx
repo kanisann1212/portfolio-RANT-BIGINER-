@@ -27,7 +27,7 @@ export const DBsumnail = async ({ url, EgentIcoN, title,urlid }: Props) => {
   const json: Egentdata = await res.json()
   const EgentIcon = json.data.find((a) => a.displayName === EgentIcoN)?.displayIcon ?? ""
   return (
-    <div className="relative w-full h-[300px] rounded-2xl">
+    <div className="relative w-full h-[250px] rounded-2xl">
       {videoId ? (
         <Link href={`${basepath}/${urlid}`}>
           <Image
@@ -36,7 +36,7 @@ export const DBsumnail = async ({ url, EgentIcoN, title,urlid }: Props) => {
             fill
             className="object-contain rounded-2xl"
           />
-          <div className="rounded-3xl backdrop-blur-2xl flex items-center gap-4">
+          <div className="absolute bottom-2 left-8 rounded-3xl backdrop-blur-2xl w-[430px] flex items-center gap-4">
             <Image
               src={EgentIcon}
               alt="サムネイル"
