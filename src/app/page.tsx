@@ -1,7 +1,7 @@
 import { Intro } from "@/components/animation/Intro";
 import { Top } from "@/components/TOP PAGE/Top";
-import { IconHeader } from "@/data/Icon";
-import { RankHeader } from "@/data/RANK";
+import { IconHeader } from "@/lib/getIconHeader";
+import { RankHeader } from "@/lib/RANK";
 
 export default async function Home() {
   const Icon = await IconHeader()

@@ -2,20 +2,20 @@ import { auth } from "../../auth"
 import Image from "next/image"
 import { Header } from "@/components/TOP PAGE/Header";
 import { CreateVideo } from "@/components/session/CreateVideo";
-import { prisma } from "@/lib/prisma"
 import { KAISETSU } from "@/components/TOP PAGE/KAISETSU";
 import { DBsumnail } from "@/components/session/DBsumnail";
-import { RankHeader } from "@/data/RANK";
-import { IconHeader } from "@/data/Icon";
+import { RankHeader } from "@/lib/RANK";
+import { IconHeader } from "@/lib/getIconHeader";
 import { Gauge } from "@/components/GUN LAYOUT/gauge";
+import { MypageCarousel } from "@/components/ui/Mypagecarousel";
+import { Videodata } from "@/lib/Video";
+
 
 export default async function Mypage() {
   const session = await auth()
   const EgentIcon1 = await IconHeader()
   const VTier = await RankHeader()
-  const Video = await prisma.video.findMany({
-    where: { userId: session?.user.id },
-  })
+  const Video = await Videodata()
 
   return (
     <div>
@@ -55,6 +55,7 @@ export default async function Mypage() {
         </div>
       </div>
       <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANK UP!!.png" />
+      <MypageCarousel /> 
       <div className="flex ml-5">
         <CreateVideo />
         <Gauge value={Video.length} max={100} label="YOUR VIDEO" />
