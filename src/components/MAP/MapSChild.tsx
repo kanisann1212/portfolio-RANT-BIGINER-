@@ -28,7 +28,7 @@ export const MapSChild = ({ MapMicro }: { MapMicro: MapType }) => {
           minWidth: "1400px",
         }}
       >
-        <Header Hanten={true} />
+        <Header  />
         <motion.h1
           className="text-9xl"
           initial='initial'

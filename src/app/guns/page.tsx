@@ -18,7 +18,7 @@ export default async function Guns() {
 
   return (
     <>
-      <Header Hanten/>
+      <Header />
       <MIBAE gazou="/FIRE.jpg" syubun="エイムはすべての人に与えられた平等の力です。" hukubun="適切な武器と完璧なエイムで相手を叩き潰しましょう" kime="ーBring it onー" />
       <AnimationGunlist filterdWeponSkin={filterdWeponSkin} />
     </>
