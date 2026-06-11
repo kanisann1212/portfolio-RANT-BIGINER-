@@ -5,7 +5,7 @@ import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 export default async function Mapp1() {
   return (
     <>
-      <Header Hanten />
+      <Header  />
       <MIBAE syubun="ヴァロラントは頭脳戦です。" hukubun="頭を使い地の利を生かしましょう" kime="ーGame onー" gazou="/MAPT.jpg"/>
       <MapList />
     </>
