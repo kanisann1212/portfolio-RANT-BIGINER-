@@ -1,10 +1,15 @@
 import { Intro } from "@/components/animation/Intro";
 import { Top } from "@/components/TOP PAGE/Top";
+import { IconHeader } from "@/data/Icon";
+import { RankHeader } from "@/data/RANK";
 
-export default function Home() {
+export default async function Home() {
+  const Icon = await IconHeader()
+  const Tier = await RankHeader()
+  const VTier = Tier?.smallIcon
   return (
     <Intro>
-    <Top />
+    <Top Icon={Icon} VTier= {VTier}/>
     </Intro>
   );
 }

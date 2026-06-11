@@ -31,7 +31,7 @@ export const KAISETSU = ({ gazou, kime, syubun, hukubun }: MIBAProps) => {
         filter,
       }}>
       <motion.div
-        className="flex mt-[200px] mb-[800px] w-screen items-center justify-center"
+        className="flex mt-[100px] mb-[700px] w-screen items-center justify-center"
         initial={{ scale: 0, y: -50 }}
         whileInView={{ scale: 1, y: 0 }}
         transition={{ duration: 0.5 }}>

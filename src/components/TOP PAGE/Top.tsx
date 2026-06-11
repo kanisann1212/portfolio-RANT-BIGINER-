@@ -17,8 +17,13 @@ import {
 const MotionUser = motion.create(User)
 const MotionAvatar = motion.create(Avatar)
 
+type Props = {
+  Icon: string,
+  VTier: string | undefined,
+}
 
-export const Top = () => {
+
+export const Top = ({ Icon, VTier }: Props) => {
   const { data: session } = useSession()
   return (
     <>
@@ -43,9 +48,17 @@ export const Top = () => {
                 initial={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.5 }}
               >
-                <AvatarImage src={session.user.image ?? "https://github.com/shadcn.png"} alt="@shadcn" />
+                <AvatarImage src={session.user.image ?? Icon} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
-                <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+                <AvatarBadge className="bg-green-600 dark:bg-green-800" >
+                  {VTier &&
+                    <Image
+                      src={VTier}
+                      alt="VALOGO"
+                      fill
+                      className="object-cover"
+                    />}
+                </AvatarBadge>
               </MotionAvatar>
             </Link>
             :
