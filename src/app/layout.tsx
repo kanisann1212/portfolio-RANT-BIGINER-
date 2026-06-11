@@ -1,19 +1,20 @@
-import type { Metadata,Viewport } from "next";
-import { Geist, Geist_Mono,Archivo_Black,Dela_Gothic_One } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Archivo_Black, Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react"
 import { Toaster } from "@/components/ui/sonner"
+import Background3DIcon from "@/components/animation/BackGround3D";
 
 const valorant = Archivo_Black({
-  weight :"400",
+  weight: "400",
   subsets: ["latin"]
 })
-  export const viewport: Viewport= {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false, 
-  }
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,14 +40,19 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${valorant.className} h-full antialiased`} 
+      className={`${valorant.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-white p-0 m-0 ">
         <SessionProvider>
-        {children}
-        <Toaster position="top-center"/>
+          <Background3DIcon />
+          <main 
+          className="min-h-full flex flex-col  text-white p-0 m-0 "
+          style={{ position: "relative", zIndex: 1 }}>
+            {children}
+          </main>
+          <Toaster position="top-center" />
         </SessionProvider>
-        </body>
+      </body>
     </html>
   );
 }
