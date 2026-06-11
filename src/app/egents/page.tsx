@@ -26,7 +26,7 @@ export default async function Egents() {
   return (
     <>
       <Header />
-      <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="/AGENTP.jpg"/>
+      <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/AGENTP.jpg"/>
       <SEN A={Sentinel} />
       <h1 className="text-black text-9xl m-10 text-center"></h1>
       <DUE A={duelist} />

@@ -50,7 +50,7 @@ export const DBsumnail = async ({ url, EgentIcoN, title,urlid }: Props) => {
       ) : (
         <Link href={`${basepath}/${urlid}`}>
           <Image
-            src="/画像を取得できませんでした.png"
+            src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/NotImage.png"
             alt="サムネイル"
             fill
             className="object-contain rounded-3xl"

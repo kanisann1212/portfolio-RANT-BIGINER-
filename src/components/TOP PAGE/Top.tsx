@@ -33,7 +33,7 @@ export const Top = ({ Icon, VTier }: Props) => {
       </div>
       <div className="fixed left-10 top-10 " >
         <Image
-          src="/VALORANT.png"
+          src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/VALORANT.png"
           alt="VALORANT"
           width={200}
           height={400}
@@ -73,11 +73,11 @@ export const Top = ({ Icon, VTier }: Props) => {
             </Link>}
         </SessionProvider>
       </div>
-      <MIBAE syubun="このサイトは初心者である方全員に向けて作りました。" hukubun="どうかこのサイトがあなたのバロ人生の糧になることを祈っております。" kime="ーFOR YOUー" gazou="/kai.jpg" />
+      <MIBAE syubun="このサイトは初心者である方全員に向けて作りました。" hukubun="どうかこのサイトがあなたのバロ人生の糧になることを祈っております。" kime="ーFOR YOUー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/kai.jpg" />
       <div className="grid grid-cols-3 gap-10 m-15 mr-20 ml-20 h-[80vh]">
         <div className="h-full">
           <Midashi
-            src={"/abys.webp"}
+            src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/abys.webp"}
             midashi={"MAP"}
 
             page={"/map"}
@@ -85,15 +85,14 @@ export const Top = ({ Icon, VTier }: Props) => {
         </div>
         <div className="h-full">
           <Midashi
-            src={"/egents.avif"}
+            src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/egents.avif"}
             midashi={"EGENT"}
-
             page={"/egents"}
           />
         </div>
         <div className="h-full">
           <Midashi
-            src={"/wepon.avif"}
+            src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/wepon.avif"}
             midashi={"WEPON"}
             page={"/guns"}
           />

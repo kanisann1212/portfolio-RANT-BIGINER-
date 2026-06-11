@@ -39,7 +39,7 @@ export const INI = ({ A }: AProps) => {
         }}
       >
         <Image
-          src="/SOVA.jpg"
+          src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/SOVA.jpg"
           alt="background"
           fill
           className="object-cover -z-10 "

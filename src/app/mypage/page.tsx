@@ -21,7 +21,7 @@ export default async function Mypage() {
     <div>
       <Header />
       <div
-        className="flex  justify-between bg-[url(/Reaver.jpg)] bg-left items-center p-20 mask-b-from-90% mask-t-from-90% bg-cover  h-[300px]">
+        className="flex  justify-between bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/Reaver.jpg)] bg-left items-center p-20 mask-b-from-90% mask-t-from-90% bg-cover  h-[300px]">
         <div className="flex items-center gap-5 ">
           <Image
             src={(session?.user.favoriteAgent ? EgentIcon1 : session?.user.image) ?? ""}

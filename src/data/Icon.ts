@@ -13,5 +13,3 @@ export const IconHeader = cache(async () => {
   const EgentIcon1 = jsonIcon.data.find((a) => a.displayName === EgentIcoN)?.displayIcon ?? ""
   return EgentIcon1
 })
-
-// Iconデータを返す関数(url)非同期なので呼ぶ側でawaitつけよう。こっちは画像URLが返ってくる

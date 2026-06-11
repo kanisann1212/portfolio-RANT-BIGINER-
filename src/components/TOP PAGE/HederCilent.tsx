@@ -40,8 +40,8 @@ export const HeaderClient = ({ Hanten, VTier, Icon }: Props) => {
       duration: 1.5
     }
   }
-  const blackZ = "/VALG.png"
-  const whiteZ = "/LOGOWHITE.png"
+  const blackZ = "https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/VALG.png"
+  const whiteZ = "https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/LOGOWHITE.png"
   return (
     <div className={`flex justify-between items-center ${Hanten ? "text-white " : "text-black"}  pt-5  border-b`}>
       <div className="flex pl-10 pb-5 items-center">

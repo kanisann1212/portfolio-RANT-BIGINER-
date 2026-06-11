@@ -1,5 +1,4 @@
 import type { MapType } from "@/types/type"
-import Link from "next/link"
 import { AnimationMaplist } from "../animation/AnimationMaplist"
 
 export const MapList = async () => {

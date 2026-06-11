@@ -6,7 +6,7 @@ export default async function Mapp1() {
   return (
     <>
       <Header  />
-      <MIBAE syubun="ヴァロラントは頭脳戦です。" hukubun="頭を使い地の利を生かしましょう" kime="ーGame onー" gazou="/MAPT.jpg"/>
+      <MIBAE syubun="ヴァロラントは頭脳戦です。" hukubun="頭を使い地の利を生かしましょう" kime="ーGame onー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/MAPT.jpg"/>
       <MapList />
     </>
   )

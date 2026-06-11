@@ -37,7 +37,7 @@ export const SEN = ({ A }: AProps) => {
         }}
       >
         <Image
-          src="/KILLJOY.jpg"
+          src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/KILLJOY.jpg"
           alt="background"
           fill
           className="object-cover -z-10 "

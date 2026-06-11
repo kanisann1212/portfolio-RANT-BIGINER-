@@ -55,7 +55,7 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
   return (
     <>
     <ScrambleText className={"text-bold text-center  text-9xl mb-20"}>WEPONS LIST</ScrambleText>
-      <div className="w-full mask-t-from-80% mask-b-from-90% bg-[url(/singular.jpg)] bg-position-[160px] bg-cover">
+      <div className="w-full mask-t-from-80% mask-b-from-90% bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/singular.jpg)] bg-position-[160px] bg-cover">
         <Ticker
           duration={30}
           isPlaying={isPlaying}

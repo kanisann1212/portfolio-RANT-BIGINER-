@@ -39,7 +39,7 @@ export const CONT = ({ A }: AProps) => {
         }}
       >
         <Image
-          src="/OMEN.jpg"
+          src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/OMEN.jpg"
           alt="background"
           fill
           className="object-cover -z-10 "

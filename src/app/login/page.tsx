@@ -11,13 +11,13 @@ export default function Loginform() {
     <>
     <Header />
     <div className="bg-white">
-      <div className="grid grid-cols-2 h-screen w-screen items-center text-black justify-center lg:max-w-none lg:px-0 bg-[url(/AISOLOGIN.jpg)] bg-position-[160px] bg-cover ">
+      <div className="grid grid-cols-2 h-screen w-screen items-center text-black justify-center lg:max-w-none lg:px-0 bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/AISOLOGIN.jpg)] bg-position-[160px] bg-cover ">
         <div className="relative lg:block hidden">
           <Video />
           <h1 className="text-white absolute top-130 left-40 text-8xl">RANT BIGINNER</h1>
           <div className="absolute left-120 top-170 " >
             <Image
-              src="/VALORANT.png"
+              src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/VALORANT.png"
               alt="VALORANT"
               width={200}
               height={400}
