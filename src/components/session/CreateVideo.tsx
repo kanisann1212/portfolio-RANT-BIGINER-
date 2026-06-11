@@ -13,6 +13,7 @@ import { SelectAgent } from "@/components/session/SelectAgent";
 import { SelectMap } from "./SlectMap";
 import { toast } from "sonner"
 import { ImageSumnail } from "./ImageSumnail";
+import { useRouter } from "next/navigation";
 
 
 export type VideoFormData = {
@@ -24,6 +25,7 @@ export type VideoFormData = {
 
 export const CreateVideo = () => {
   const { register, control, handleSubmit } = useForm<VideoFormData>()
+  const router = useRouter()
 
   const onSubmit = async (data: VideoFormData) => {
     toast.promise(
@@ -35,15 +37,19 @@ export const CreateVideo = () => {
         })
 
         if (!response.ok) {
-          throw new Error("投稿失敗")  
+          throw new Error("投稿失敗")
         }
       },
       {
         loading: "投稿中...",
-        success: "投稿しました！",
+        success: () => {
+          router.push("/mypage")
+          router.refresh()
+          return "投稿完了！"
+        },
         error: "投稿に失敗しました。値を確認してください",
       },
-      
+
     )
   }
 
@@ -51,8 +57,8 @@ export const CreateVideo = () => {
     <Drawer>
       <div className="flex items-center justify-center">
         <DrawerTrigger
-          className="border h-[50px] w-[100px] rounded-3xl"
-        >Open
+          className="border h-[80px] w-[120px] rounded-3xl mt-10"
+        >CREATE
         </DrawerTrigger>
       </div>
       <div>
@@ -75,10 +81,10 @@ export const CreateVideo = () => {
           </DrawerHeader>
           <div className="flex justify-between ml-5 mr-5">
             <div className="grid grid-cols-2">
-            <SelectAgent control={control} />
-            <SelectMap control={control} />
+              <SelectAgent control={control} />
+              <SelectMap control={control} />
             </div>
-            <ImageSumnail control={control}/>  
+            <ImageSumnail control={control} />
           </div>
           <DrawerFooter>
             <Button onClick={handleSubmit(onSubmit)}>Submit</Button>

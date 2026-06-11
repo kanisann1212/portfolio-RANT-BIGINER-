@@ -32,6 +32,7 @@ export function LoginCard() {
     }
     toast.success("ログインしました")
     router2.push("/mypage")
+    router2.refresh() 
   }
   return (
     <FieldSet className="w-full max-w-xs mb-5">
