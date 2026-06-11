@@ -1,5 +1,4 @@
 import { MapSChild } from "@/components/MAP/MapSChild"
-import { MapsRecomendparts } from "@/components/MAP/MapsRecomend"
 import type { MapType } from "@/types/type"
 
 

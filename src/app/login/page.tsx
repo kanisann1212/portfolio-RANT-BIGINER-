@@ -5,8 +5,11 @@ import { GoogleSignIn } from "@/components/session/Googlesignin";
 import { Video } from "@/components/TOP PAGE/Video";
 import { LoginCard } from "@/components/ui/LoginCard";
 import Link from "next/link";
+import { Header } from "@/components/TOP PAGE/Header";
 export default function Loginform() {
   return (
+    <>
+    <Header />
     <div className="bg-white">
       <div className="grid grid-cols-2 h-screen w-screen items-center text-black justify-center lg:max-w-none lg:px-0 bg-[url(/AISOLOGIN.jpg)] bg-position-[160px] bg-cover ">
         <div className="relative lg:block hidden">
@@ -40,5 +43,6 @@ export default function Loginform() {
         </div>
         </div>  
     </div>  
+    </>
   )
 }
