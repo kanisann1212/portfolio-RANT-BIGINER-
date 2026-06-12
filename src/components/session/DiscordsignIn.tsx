@@ -1,6 +1,6 @@
 'use client'
 import { DiscordIcon } from "@/components/ui/DiscordIcon";
-import { handleSingIN } from "@/app/actions/Loginout";
+import { handleSingIN } from "@/lib/actions/Loginout";
 import { Button } from "@/components/ui/button";
 
 export const DiscordSignIn = () =>{

@@ -7,5 +7,6 @@ export async function handleSingIN(provider:string){
 }
 
 export async function handleSignOut() {
-  await signOut()
+  await signOut({redirectTo:"/"})
 }
+
