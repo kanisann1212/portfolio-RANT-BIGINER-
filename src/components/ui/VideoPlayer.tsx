@@ -1,4 +1,4 @@
-"use cliet"
+"use client"
 
 import { useState } from 'react'
 import ReactPlayer from 'react-player'
@@ -32,7 +32,8 @@ export const VideoPlayer = ({ src }: Props) => {
     }
 
     return (
-
+        <>
+        {videoURL ? (
         <ReactPlayer
             src={ videoURL }
             width="100%"
@@ -44,5 +45,8 @@ export const VideoPlayer = ({ src }: Props) => {
             onRateChange={handleRateChange}
             onVolumeChange={handleVolumeChange}
         />
+    ):(<h1 className=''>動画情報を取得できませんでした。</h1>)
+}
+</>
     )
 }

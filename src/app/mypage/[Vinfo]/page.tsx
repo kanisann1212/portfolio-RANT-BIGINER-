@@ -24,6 +24,7 @@ export default async function MypageVideo({params}:Props) {
     return null
   }
   const videoURL = getYoutubeId(videoID.url)
+  console.log(videoURL)
   return (
     <div>
       <Header />
@@ -32,7 +33,7 @@ export default async function MypageVideo({params}:Props) {
         <DeleteBudgeMenu Vinfo = {Vinfo}  Icon={Icon} />
       </div>
       <div>
-        {/* <VideoPlayer src ={videoURL}/> */}
+        <VideoPlayer  src={videoURL}/>
         {/* ↑これがサーバーコンポーネントなのにstateつかってんじゃねえ！ってエラー出てるのでこの会社からしてね♡ */}
         </div>
     </div>
