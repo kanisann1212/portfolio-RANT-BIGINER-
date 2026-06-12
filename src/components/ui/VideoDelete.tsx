@@ -20,7 +20,7 @@ export function VideoDelete({videoId}:{videoId:string}) {
   const router = useRouter()
   const handelDelete = async() =>{
     const res = await fetch(`/api/video/${videoId}`,{
-      method:"DELTE",
+      method:"DELETE",
     })
         if (!res.ok) {
       toast.error("削除に失敗しました")

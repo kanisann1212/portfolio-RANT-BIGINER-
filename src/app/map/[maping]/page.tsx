@@ -48,7 +48,7 @@ export default async function MapS({ params }: Prop) {
             </div>
           )
         })}
-      </div>) : <KAISETSU kime="LOCK" syubun="あなたのランクを上げましょう" hukubun="現在機能をロック中です。動画を投稿して機能を開放しましょう" gazou="/RANK UP!!.png" />}
+      </div>) : <KAISETSU kime="LOCK" syubun="あなたのランクを上げましょう" hukubun="現在機能をロック中です。動画を投稿して機能を開放しましょう" gazou="/RANKUP.png" />}
     </div>
   )
 };

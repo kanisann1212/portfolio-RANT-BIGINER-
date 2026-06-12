@@ -54,7 +54,7 @@ export default async function Mypage() {
             }}>{VTier?.divisionName}</h1>
         </div>
       </div>
-      <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANK UP!!.png" />
+      <KAISETSU kime="TAKE YOUR VIDEO" syubun="あなたのランクを上げましょう" hukubun="マイページでは動画の投稿・管理が可能です。また動画投稿数に応じてあなたの表示ランクが上がります。たくさんあげて報酬をゲットしましょう" gazou="/RANKUP.png" />
       <MypageCarousel /> 
       <div className="flex ml-5">
         <CreateVideo />

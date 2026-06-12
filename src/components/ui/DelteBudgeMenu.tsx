@@ -5,11 +5,9 @@ import { useSession, SessionProvider } from "next-auth/react"
 import { User } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
 import { VideoDelete } from "./VideoDelete"
 import {
   Avatar,
-  AvatarBadge,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
@@ -30,15 +28,15 @@ const MotionLink = motion.create(Link)
     }
   }
   type Props = {
-  VTier: string | undefined,
   Icon: string,
+  Vinfo:string,
 }
 
-export function DropdownMenuAvatar({VTier, Icon}:Props) {
+export function DeleteBudgeMenu({ Icon,Vinfo}:Props) {
   const { data: session } = useSession()
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <DropdownMenu >
+      <DropdownMenuTrigger asChild className="w-[60px] h-[60px]">
         <Button variant="ghost" size="icon" className="rounded-full">
           <SessionProvider>
             {session?.user ?
@@ -48,18 +46,9 @@ export function DropdownMenuAvatar({VTier, Icon}:Props) {
                 initial="initial"
                 whileHover="hover"
               >
-                <Avatar>
+                <Avatar className="w-[60px] h-[60px]">
                   <AvatarImage src={session.user.image ?? Icon} alt="@shadcn" />
                   <AvatarFallback>CN</AvatarFallback>
-                  <AvatarBadge className=" bg-green-600 dark:bg-green-800">
-                    {VTier &&
-                      <Image
-                        src={VTier}
-                        alt="VALOGO"
-                        fill
-                        className="object-cover"
-                      />}
-                  </AvatarBadge>
                 </Avatar>
               </MotionLink>
               :
@@ -75,9 +64,9 @@ export function DropdownMenuAvatar({VTier, Icon}:Props) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem>
+        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
           <Trash2Icon />
-          <VideoDelete />
+          <VideoDelete videoId={Vinfo}/>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
