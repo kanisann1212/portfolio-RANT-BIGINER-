@@ -4,6 +4,7 @@ import { Header } from "@/components/TOP PAGE/Header"
 import { Videodata } from "@/lib/Video"
 import { DBsumnail } from "@/components/session/DBsumnail"
 import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
+import { LoginVerify } from "@/lib/LoginVerify"
 
 
 type Prop = {
@@ -20,6 +21,8 @@ export default async function MapS({ params }: Prop) {
   const json: MapTypedata = await res.json()
   const MapMicro: MapType = json.data
   const Video = await Videodata()
+  const session = await LoginVerify()
+  const isLogin = !!session?.user
   return (
     <div
       style={{
@@ -31,8 +34,8 @@ export default async function MapS({ params }: Prop) {
       }}
     >
       <Header />
-      <MapSChild MapMicro={MapMicro} />
-      {Video.length > 20 ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
+      <MapSChild MapMicro={MapMicro} Vlength={Video.length} isLogin={isLogin}/>
+      {Video.length > 20 && isLogin ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
         {Video.map((v) => {
           return (
             <div className=" w-[500px] h-[350px]" key={v.id}>

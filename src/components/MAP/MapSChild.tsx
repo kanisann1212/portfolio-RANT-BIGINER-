@@ -13,17 +13,17 @@ const variants = {
 
 type Props ={
   MapMicro:MapType,
-
+  Vlength:number,
+  isLogin:boolean
 }
 
-export const MapSChild = ({ MapMicro }: Props) => {
+export const MapSChild = ({ MapMicro,Vlength,isLogin }: Props) => {
   const MapNameInfo: string = MapMicro.displayName
   const MapsRecomend = MapsPattern[MapNameInfo].agents
   console.log(MapsRecomend)
 
   return (
     <>
-
         <motion.h1
           className="text-9xl"
           initial='initial'
@@ -48,7 +48,7 @@ export const MapSChild = ({ MapMicro }: Props) => {
               className=" w-full h-auto"
             />
           </div>
-          <MapsRecomendparts MapsRecomend={MapsRecomend} />
+          <MapsRecomendparts MapsRecomend={MapsRecomend} Vlength={Vlength} isLogin= {isLogin} />
         </div>
     </>
   )

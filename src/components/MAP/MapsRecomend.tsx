@@ -30,47 +30,99 @@ const linkVariants = {
 }
 
 type MapsRecomendProps = {
-  MapsRecomend: MapAgent[]
+  MapsRecomend: MapAgent[],
+  Vlength: number,
+  isLogin:boolean
 }
 const basepath = "/egents"
 
-export const MapsRecomendparts = ({ MapsRecomend }: MapsRecomendProps) => {
+export const MapsRecomendparts = ({ MapsRecomend, Vlength,isLogin }: MapsRecomendProps) => {
   return (
     <div className="grid grid-cols-3 gap-10 shrink-0 min-w-[1400px]">
-      {MapsRecomend.map((recomend) => {
-        return (
-          <MotionLink
-            className="flex flex-col items-center"
-            key={recomend.uuid}
-            href={`${basepath}/${recomend.uuid}`}
-            variants={linkVariants}
-            initial="initial"
-            whileHover="hover"
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative w-[450px] h-[450px]">
-              <Image
-                src={recomend.fullPortrait}
-                alt="VALORANT"
-                width={450}
-                height={450}
-                sizes="450px"
-                className="object-cover bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${recomend.roleIcon})`,
-                  backgroundSize: "250px",
-                  backgroundPosition: "top",
-                }}
-              />
-            </div>
-            <motion.h1
-              className={`${valorantEgent.className} font-bold text-2xl`}
-              variants={textVariants}
-            >{recomend.name}</motion.h1>
-          </MotionLink>
+      {Vlength >= 10 && isLogin ? (
+        <>
+          {
+            MapsRecomend.map((recomend: MapAgent) => {
+              return (
+                <MotionLink
+                  className="flex flex-col items-center"
+                  key={recomend.uuid}
+                  href={`${basepath}/${recomend.uuid}`}
+                  variants={linkVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative w-[450px] h-[450px]">
+                    <Image
+                      src={recomend.fullPortrait}
+                      alt="VALORANT"
+                      width={450}
+                      height={450}
+                      sizes="450px"
+                      className="object-cover bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${recomend.roleIcon})`,
+                        backgroundSize: "250px",
+                        backgroundPosition: "top",
+                      }}
+                    />
+                  </div>
+                  <motion.h1
+                    className={`${valorantEgent.className} font-bold text-2xl`}
+                    variants={textVariants}
+                  >{recomend.name}</motion.h1>
+                </MotionLink>
+              )
+            })
+          }
+        </>
+      )
+        :
+        (
+          <>
+            {
+              MapsRecomend.map((recomend: MapAgent) => {
+                return (
+                  <motion.div
+                    className="flex flex-col items-center"
+                    key={recomend.uuid}
+                    variants={linkVariants}
+                    initial="initial"
+                    whileHover="hover"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="relative w-[450px] h-[450px]">
+                      <Image
+                        src={recomend.fullPortrait}
+                        alt="VALORANT"
+                        width={450}
+                        height={450}
+                        sizes="450px"
+                        className="object-cover bg-no-repeat"
+                        style={{
+                          backgroundImage: `url(${recomend.roleIcon})`,
+                          backgroundSize: "250px",
+                          backgroundPosition: "top",
+                        }}
+                      />
+                    </div>
+                    <motion.h1
+                      className={`${valorantEgent.className} font-bold text-2xl`}
+                      variants={textVariants}
+                    >{recomend.name}</motion.h1>
+                  </motion.div>
+                )
+              })
+            }
+          </>
+
         )
-      })}
+
+      }
+
     </div>
   )
 }

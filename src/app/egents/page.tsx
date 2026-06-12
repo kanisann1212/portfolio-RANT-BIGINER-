@@ -7,6 +7,7 @@ import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { Agent } from "@/types/type"
 import { Videodata } from "@/lib/Video"
 import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
+import { LoginVerify } from "@/lib/LoginVerify"
 
 type Egentdata = {
   data:Agent[]
@@ -26,11 +27,13 @@ export default async function Egents() {
   const controller = json.data
     .filter((EGEN: Agent) => EGEN.role.displayName === "コントローラー")
   const Video = await Videodata()
+  const session = await LoginVerify()
+  const isLogin = !!session?.user
   return (
     <>
       <Header />
       <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/AGENTP.jpg"/>
-      {Video.length >= 10 ?
+      {Video.length >= 10 && isLogin ?
       (   
        <>    
       <SEN A={Sentinel} />

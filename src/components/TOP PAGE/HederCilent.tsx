@@ -1,5 +1,5 @@
 'use client'
-
+import { LogoutButton } from "../ui/LogoutButton"
 import Link from "next/link"
 import Image from "next/image"
 import { User } from "lucide-react"
@@ -17,12 +17,13 @@ const MotionLink = motion.create(Link)
 type Props = {
   Hanten?: boolean,
   VTier: string | undefined,
-  Icon: string
+  Icon: string,
+  isLogin: boolean
 }
 
 
 
-export const HeaderClient = ({ Hanten, VTier, Icon }: Props) => {
+export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
   const { data: session } = useSession()
   const textVariants = {
     initial: { color: Hanten ? 'white' : 'black' },
@@ -112,13 +113,13 @@ export const HeaderClient = ({ Hanten, VTier, Icon }: Props) => {
                 <AvatarImage src={session.user.image ?? Icon} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
                 <AvatarBadge className=" bg-green-600 dark:bg-green-800">
-                  {VTier && 
+                  {VTier &&
                     <Image
-                    src={VTier}
-                    alt="VALOGO"
-                    fill
-                    className="object-cover"
-                  />}
+                      src={VTier}
+                      alt="VALOGO"
+                      fill
+                      className="object-cover"
+                    />}
                 </AvatarBadge>
               </Avatar>
             </MotionLink>
@@ -133,7 +134,11 @@ export const HeaderClient = ({ Hanten, VTier, Icon }: Props) => {
               <User className="w-10 h-10 " />
             </MotionLink>}
         </SessionProvider>
-
+        {isLogin && (
+          <div>
+            <LogoutButton />
+          </div>
+        )}
       </div>
     </div>
   )
