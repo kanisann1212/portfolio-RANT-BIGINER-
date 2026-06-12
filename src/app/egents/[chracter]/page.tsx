@@ -21,7 +21,7 @@ export default async function Chracter({ params }: EgentPromise) {
   const Egentinfo = json.data
   const Video = await Videodata()
   return (
-    <div className="-z-0 relative bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 min-h-screen">
+    <div className="z-0 relative bg-gradient-to-b from-blue-900 via-red-700 to-gray-800 min-h-screen">
       <div className="relative z-10">
       </div>
       <div
