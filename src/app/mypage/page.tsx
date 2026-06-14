@@ -1,16 +1,16 @@
 import { auth } from "../../auth"
 import Image from "next/image"
-import { Header } from "@/components/TOP PAGE/Header";
-import { CreateVideo } from "@/components/session/CreateVideo";
-import { KAISETSU } from "@/components/TOP PAGE/KAISETSU";
-import { DBsumnail } from "@/components/session/DBsumnail";
-import { RankHeader } from "@/lib/RANK";
-import { IconHeader } from "@/lib/getIconHeader";
-import { Gauge } from "@/components/GUN LAYOUT/gauge";
-import { MypageCarousel } from "@/components/ui/Mypagecarousel";
-import { Videodata } from "@/lib/Video";
-import { prisma } from "@/lib/prisma";
-import Link from "next/link";
+import { Header } from "@/components/TOP PAGE/Header"
+import { CreateVideo } from "@/components/session/CreateVideo"
+import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
+import { RankHeader } from "@/lib/RANK"
+import { IconHeader } from "@/lib/getIconHeader"
+import { Gauge } from "@/components/GUN LAYOUT/gauge"
+import { MypageCarousel } from "@/components/ui/Mypagecarousel"
+import { Videodata } from "@/lib/Video"
+import { prisma } from "@/lib/prisma"
+import { VideoGridList } from "@/components/session/VideoGridList"
+import { SectionTitle } from "@/components/session/SectionTitle"
 import {
   Pagination,
   PaginationContent,
@@ -18,7 +18,8 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/components/ui/pagination"
+import { getAgents, getAgentIcon } from "@/lib/getAgents"
 
 export default async function Mypage({
   searchParams,
@@ -42,15 +43,43 @@ export default async function Mypage({
     take: perPage,
     skip: (currentPage - 1) * perPage,
   })
+
   const likedVideos = await prisma.like.findMany({
     where: { userId: session?.user.id },
     include: { video: true },
     orderBy: { createdAt: "desc" },
   })
+ const agents = await getAgents()
+
+  const allVideoItems = videos.map((v) => ({
+    id: v.id,
+    url: v.url,
+    title: v.title,
+    agentIcon: getAgentIcon(agents, v.agent),  
+    userName: v.user.name ?? "名無し",
+  }))
+
+
+const likedVideoItems = likedVideos.map((like) => ({
+  id: like.video.id,
+  url: like.video.url,
+  title: like.video.title,
+  agentIcon: getAgentIcon(agents, like.video.agent),  
+}))
+
+
+const myVideoItems = Video.map((v) => ({
+  id: v.id,
+  url: v.url,
+  title: v.title,
+  agentIcon: getAgentIcon(agents, v.agent),  
+}))
 
   return (
     <div>
       <Header />
+
+  
       <div className="flex justify-between bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/Reaver.jpg)] bg-left items-center p-20 mask-b-from-90% mask-t-from-90% bg-cover h-[300px]">
         <div className="flex items-center gap-5">
           <Image
@@ -90,23 +119,10 @@ export default async function Mypage({
         <Gauge value={Video.length} max={100} label="YOUR VIDEO" />
       </div>
 
-      <div className="flex items-center gap-4 my-10">
-        <div className="border-t-2 borde-white flex-1" />
-        <h2 className="text-5xl font-extrabold whitespace-nowrap">みんなの動画</h2>
-        <div className="border-t-2 borde-white flex-1" />
-      </div>
-      <div className="grid lg:grid-cols-5 gap-2 grid-cols-2">
-        {videos.map((v) => (
-          <Link key={v.id} href={`/gallery/${v.id}`}>
-            <div className="w-[500px] h-[350px]">
-              <div className="flex flex-col items-center justify-center gap-2">
-                <DBsumnail url={v.url} EgentIcoN={v.agent} title={v.title} urlid={v.id} />
-                <p className="text-center font-bold">{v.user.name}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+  
+      <SectionTitle title="みんなの動画" />
+      <VideoGridList videos={allVideoItems} showUserName />
+
       <Pagination className="my-10">
         <PaginationContent>
           {currentPage > 1 && (
@@ -114,18 +130,13 @@ export default async function Mypage({
               <PaginationPrevious href={`/mypage?page=${currentPage - 1}`} />
             </PaginationItem>
           )}
-
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
             <PaginationItem key={p}>
-              <PaginationLink
-                href={`/mypage?page=${p}`}
-                isActive={p === currentPage}
-              >
+              <PaginationLink href={`/mypage?page=${p}`} isActive={p === currentPage}>
                 {p}
               </PaginationLink>
             </PaginationItem>
           ))}
-
           {currentPage < totalPages && (
             <PaginationItem>
               <PaginationNext href={`/mypage?page=${currentPage + 1}`} />
@@ -134,58 +145,15 @@ export default async function Mypage({
         </PaginationContent>
       </Pagination>
 
+   
+      <SectionTitle title="いいねした動画" />
+      <VideoGridList
+        videos={likedVideoItems}
+        emptyMessage="まだいいねした動画がありません"
+      />
 
-      <div className="flex items-center gap-4 my-10">
-        <div className="border-t-2 borde-white flex-1" />
-        <h2 className="text-5xl font-extrabold whitespace-nowrap">いいねした動画</h2>
-        <div className="border-t-2 borde-white flex-1" />
-      </div>
-      {likedVideos.length > 0 ? (
-        <div className="grid lg:grid-cols-5 gap-2 grid-cols-2">
-          {likedVideos.map((like) => (
-            <Link key={like.id} href={`/gallery/${like.video.id}`}>
-              <div className="w-[500px] h-[350px]">
-                <div className="flex flex-col items-center justify-center gap-2">
-                  <DBsumnail
-                    url={like.video.url}
-                    EgentIcoN={like.video.agent}
-                    title={like.video.title}
-                    urlid={like.video.id}
-                  />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <h1 className="text-4xl font-bold text-center text-gray-400 my-10">
-          まだいいねした動画がありません
-        </h1>
-      )}
-
-
-      <div className="flex items-center gap-4 my-10 ">
-        <div className="border-t-2 borde-white flex-1" />
-        <h2 className="text-5xl font-extrabold whitespace-nowrap">あなたの動画</h2>
-        <div className="border-t-2 borde-white flex-1" />
-      </div>
-      {Video.length > 0 ? (
-        <div className="grid lg:grid-cols-5 gap-2 grid-cols-2">
-          {Video.map((v) => (
-            <div className="w-[500px] h-[350px]" key={v.id}>
-              <div className="flex flex-col items-center justify-center gap-2">
-                <DBsumnail url={v.url} EgentIcoN={v.agent} title={v.title} urlid={v.id} />
-                <div className="flex items-center gap-4 w-full">
-                  <div className="border-t border-black flex-1" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <h1 className="text-8xl font-extrabold text-center text-white">動画がありません</h1>
-      )}
-
+      <SectionTitle title="あなたの動画" />
+      <VideoGridList videos={myVideoItems} />
     </div>
   )
 }

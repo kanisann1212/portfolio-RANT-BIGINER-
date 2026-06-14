@@ -1,23 +1,17 @@
-import { AnimationEgentSkil } from "@/components/animation/AnimationEgentSkil"
-import type { AgentTypeInfo } from "@/types/type"
+import { AnimationEgentSkil } from "@/components/AGENT/AnimationEgentSkil"
 import { Header } from "@/components/TOP PAGE/Header"
 import { Videodata } from "@/lib/Video"
 import { DBsumnail } from "@/components/session/DBsumnail"
 import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
+import { EgentdataInfo } from "@/types/type"
+import { EgentPromise } from "@/types/type"
 
-type Egentdata = {
-  data: AgentTypeInfo
-}
-
-type EgentPromise = {
-  params: Promise<{ chracter: string }>
-}
 
 export default async function Chracter({ params }: EgentPromise) {
   const basepath = 'https://valorant-api.com/v1/agents'
   const { chracter } = await params
   const res = await fetch(`${basepath}/${chracter}?isPlayableCharacter=true&language=ja-JP`)
-  const json: Egentdata = await res.json()
+  const json: EgentdataInfo = await res.json()
   const Egentinfo = json.data
   const Video = await Videodata()
   return (
@@ -35,20 +29,20 @@ export default async function Chracter({ params }: EgentPromise) {
       />
       <Header />
       <AnimationEgentSkil Egentinfo={Egentinfo} />
-            {Video.length > 60 ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
-              {Video.map((v) => {
-                return (
-                  <div className=" w-[500px] h-[350px]" key={v.id}>
-                    <div className="flex flex-col items-center justify-ceter gap-2 ">
-                      <DBsumnail url={v.url} EgentIcoN={v.agent} title={v.title} urlid={v.id} />
-                      <div className="flex items-center gap-4 w-full">
-                        <div className="border-t border-black flex-1" />
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>) : <KAISETSU kime="LOCK" syubun="あなたのランクを上げましょう" hukubun="現在機能をロック中です。動画を投稿して機能を開放しましょう" gazou="/RANKUP.png" />}
+      {Video.length > 60 ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
+        {Video.map((v) => {
+          return (
+            <div className=" w-[500px] h-[350px]" key={v.id}>
+              <div className="flex flex-col items-center justify-ceter gap-2 ">
+                <DBsumnail url={v.url} EgentIcoN={v.agent} title={v.title} urlid={v.id} />
+                <div className="flex items-center gap-4 w-full">
+                  <div className="border-t border-black flex-1" />
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>) : <KAISETSU kime="LOCK" syubun="あなたのランクを上げましょう" hukubun="現在機能をロック中です。動画を投稿して機能を開放しましょう" gazou="/RANKUP.png" />}
     </div>
   )
 }

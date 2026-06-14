@@ -2,9 +2,8 @@ import { AnimationGunlist } from "@/components/animation/AnimationGunlist"
 import { Header } from "@/components/TOP PAGE/Header"
 import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { WeponType, Skined } from "@/types/type"
-type Wepondata = {
-  data: WeponType[]
-}
+import type { Wepondata } from "@/types/type"
+
 
 export default async function Guns() {
 
@@ -14,7 +13,6 @@ export default async function Guns() {
     ...wepon,
     skins: wepon.skins.filter((skin: Skined) => skin.chromas.length >= 4),
   }))
-  console.log(json)
 
   return (
     <>

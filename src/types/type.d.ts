@@ -2,7 +2,48 @@ export type RANKjson = Array<{
   uuid:string,
   tiers:RANKtire[]
 }>
+export type MypageInfoProps = {
+  params: Promise<{ Vinfo: string }>
+}
+export type AgentandMapProps = {
+  Map: MapType
+  Agent: AgentTypeInfo
+}
 
+export type EgentPromise = {
+  params: Promise<{ chracter: string }>
+}
+export type MapInfoProp = {
+  params: Promise<{ maping: string }>
+}
+export type MapTypedata = {
+  data: MapType
+}
+export type AgentdataProps = {
+ Sentinel:Agent[]
+ duelist:Agent[],
+ Initiater:Agent[],
+ controller:Agent[]
+}
+export type WepondataInfo = {
+  data:WeponType
+}
+export type Wepondata = {
+  data: WeponType[]
+}
+export type GunPromise = {
+  params: Promise<{ gun: string }>
+}
+export type Weponpattern = {
+  [key:string] :{Windex:number}
+}
+
+export type EgentdataInfo = {
+  data: AgentTypeInfo
+}
+export type Egentdata = {
+  data:Agent[]
+}
 type RANKtire = {
   tier:number,
   tierName:string,

@@ -1,23 +1,13 @@
 import { Header } from "@/components/TOP PAGE/Header";
 import { WeponSkinPatternLayout } from "@/components/GUN LAYOUT/WeponSkinPattern";
-import { WeponType } from "@/types/type";
-
-type Weponpattern = {
-  [key:string] :{Windex:number}
-}
-
-type GunPromise = {
-  params: Promise<{ gun: string }>
-}
-
-type Wepondata = {
-  data:WeponType
-}
+import type { WepondataInfo } from "@/types/type";
+import type { GunPromise } from "@/types/type";
+import type { Weponpattern } from "@/types/type";
 
 export default async function Gun({ params }: GunPromise) {
   const { gun } = await params
   const res = await fetch(`https://valorant-api.com/v1/weapons/${gun}`)
-  const json : Wepondata= await res.json()
+  const json : WepondataInfo= await res.json()
   const Weponinfo = json.data
   const WeponName = json.data.displayName
   const WeponPattern :Weponpattern = {
@@ -43,7 +33,6 @@ export default async function Gun({ params }: GunPromise) {
     Melee:{Windex:98},
   }
   const {Windex} = WeponPattern[WeponName] ?? {Windex:0}
-  console.log(json)
   return (
     <>
       <Header />

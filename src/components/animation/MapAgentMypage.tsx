@@ -1,14 +1,8 @@
 'use client'
-
 import Image from "next/image"
 import { motion } from "framer-motion"
-import type { AgentTypeInfo } from "@/types/type"
-import { MapType } from "@/types/type"
+import type { AgentandMapProps } from "@/types/type"
 
-type Props = {
-  Map: MapType
-  Agent: AgentTypeInfo
-}
 const MotionImage = motion.create(Image)
 const ImageVariants = {
   initial: { opacity: 0, y: 200 },
@@ -32,7 +26,7 @@ const linkVariants = {
 
 
 
-export const MapAgentMypage = ({ Map, Agent }: Props) => {
+export const MapAgentMypage = ({ Map, Agent }: AgentandMapProps) => {
   return (
     <>
       <div className="flex">

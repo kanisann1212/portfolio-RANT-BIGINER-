@@ -5,24 +5,18 @@ import { Videodata } from "@/lib/Video"
 import { DBsumnail } from "@/components/session/DBsumnail"
 import { KAISETSU } from "@/components/TOP PAGE/KAISETSU"
 import { LoginVerify } from "@/lib/LoginVerify"
+import { MapInfoProp } from "@/types/type"
+import { MapTypedata } from "@/types/type"
 
 
-type Prop = {
-  params: Promise<{ maping: string }>
-}
-
-type MapTypedata = {
-  data: MapType
-}
-
-export default async function MapS({ params }: Prop) {
+export default async function MapS({ params }: MapInfoProp) {
   const { maping } = await params
   const res = await fetch(`https://valorant-api.com/v1/maps/${maping}`)
   const json: MapTypedata = await res.json()
   const MapMicro: MapType = json.data
   const Video = await Videodata()
   const session = await LoginVerify()
-  const isLogin = !!session?.user
+  const isLogin:boolean = !!session?.user
   return (
     <div
       style={{

@@ -17,7 +17,6 @@ export async function POST(req: NextRequest) {
   })
 
   if (existing) {
-
     await prisma.like.delete({
       where: { userId_videoId: { userId, videoId } },
     })

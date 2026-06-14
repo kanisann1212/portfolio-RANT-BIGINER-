@@ -1,6 +1,6 @@
 'use client'
 import { Dela_Gothic_One } from "next/font/google"
-import { AnimationSkilofMap } from "@/components/animation/AnimatioSkilofMap"
+import { AnimationSkilofMap } from "@/components/AGENT/AnimatioSkilofMap"
 import ScrambleText from "@/components/animation/ScrambleText"
 import { EgentSkils } from "@/components/AGENT/EGENTskils"
 import Image from "next/image"

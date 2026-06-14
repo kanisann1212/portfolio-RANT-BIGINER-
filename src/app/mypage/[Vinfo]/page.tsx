@@ -9,20 +9,18 @@ import { InfoMap } from "@/lib/Infomap"
 import { MapAgentMypage } from "@/components/animation/MapAgentMypage"
 import { auth } from "@/auth"
 import { LikeButton } from "@/components/ui/Likebutton"
+import type { AgentTypeInfo } from "@/types/type"
+import type { MapType } from "@/types/type"
+import { MypageInfoProps } from "@/types/type"
 
-type Props = {
-  params: Promise<{ Vinfo: string }>
-}
 
-export default async function MypageVideo({ params }: Props) {
+export default async function MypageVideo({ params }: MypageInfoProps) {
   const { Vinfo } = await params
   const videoID = await prisma.video.findUnique({ where: { id: Vinfo } })
   if (!videoID) {
     notFound()
   }
   const session = await auth()
-
-
   const count = await prisma.like.count({
     where: { videoId: videoID.id },
   })
@@ -47,10 +45,10 @@ export default async function MypageVideo({ params }: Props) {
     return null
   }
   const videoURL = getYoutubeId(videoID.url)
-  const Agent = await infoAgent(videoID.agent)
-  const Map = await InfoMap(videoID.map)
+  const Agent : AgentTypeInfo= await infoAgent(videoID.agent)
+  const Map : MapType = await InfoMap(videoID.map)
 
-  console.log(Map)
+
   return (
     <div>
       <Header />
@@ -58,13 +56,13 @@ export default async function MypageVideo({ params }: Props) {
         <div className="flex justify-between items-center mr-20 mt-20">
           <h1 className="text-8xl text-center font-extrabold">{videoID.title}</h1>
           <div>
-          <DeleteBudgeMenu Vinfo={Vinfo} Icon={Icon} />
-          <LikeButton
-            videoId={videoID.id}
-            initialLiked={!!myLike}
+            <DeleteBudgeMenu Vinfo={Vinfo} Icon={Icon} />
+            <LikeButton
+              videoId={videoID.id}
+              initialLiked={!!myLike}
 
-            initialCount={count}
-          />
+              initialCount={count}
+            />
           </div>
         </div>
         <div className="flex items-center mx-auto w-[1400px] h-[700px]">
