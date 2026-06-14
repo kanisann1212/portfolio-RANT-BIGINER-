@@ -25,6 +25,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   videos        Video[]
+  likes  Like[]
 }
 
 model Account {
@@ -68,4 +69,17 @@ model Video {
   createdAt DateTime @default(now())
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes     Like[] 
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  videoId   String
+  createdAt DateTime @default(now())
+
+  user   User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  video  Video @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, videoId]) 
 }

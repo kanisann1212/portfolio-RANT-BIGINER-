@@ -41,9 +41,9 @@ export function VideoDelete({videoId}:{videoId:string}) {
           <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
             <Trash2Icon />
           </AlertDialogMedia>
-          <AlertDialogTitle>削除しますか?</AlertDialogTitle>
+          <AlertDialogTitle>動画を削除しますか?</AlertDialogTitle>
           <AlertDialogDescription>
-            後戻りはできま線。本当に削除致しますか？
+            後戻りはできません。<br/>本当に削除致しますか？
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -54,3 +54,4 @@ export function VideoDelete({videoId}:{videoId:string}) {
     </AlertDialog>
   )
 }
+  
