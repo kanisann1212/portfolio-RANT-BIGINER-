@@ -57,7 +57,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
   return (
     <div className={`flex justify-between items-center ${Hanten ? "text-white" : "text-black"} pt-5 border-b relative`}>
 
-      {/* ロゴ */}
+
       <div className="flex pl-4 md:pl-10 pb-5 items-center">
         <MotionLink href="/" variants={linkVariants} initial="initial" whileHover="hover">
           <Image src={Hanten ? whiteZ : blackZ} alt="VALOGO" width={30} height={30} />
@@ -72,7 +72,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
         </MotionLink>
       </div>
 
-      {/* ハンバーガーボタン（スマホだけ） */}
+   
       <button
         className="md:hidden pr-4 pb-5 z-50"
         onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +84,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
         )}
       </button>
 
-      {/* PC用ナビ */}
+
       <div className="hidden md:flex space-x-15 pr-15 pb-5 items-center">
         {navLinks.map((link) => (
           <MotionLink
@@ -139,7 +139,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
         )}
       </div>
 
-      {/* スマホ用メニュー */}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
