@@ -2,16 +2,12 @@
 
 import React, { useRef, useState,useEffect } from "react";
 import { motion } from "framer-motion";
-import { Dela_Gothic_One } from "next/font/google"
+
 
 const CYCLES_PER_LETTER = 6.5;
 const SHUFFLE_TIME = 50;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
-const valorantEgent = Dela_Gothic_One({
-  weight: "400",
-  subsets: ["latin"]
-})
 
 
 type Props = {
@@ -22,7 +18,7 @@ type Props = {
 const ScrambleText: React.FC<Props> = ({ children,className }) => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const TARGET_TEXT = children ?? "" 
-  const ref = useRef<HTMLSpanElement>(null)
+
 
   const [text, setText] = useState(TARGET_TEXT);
 useEffect(() => {

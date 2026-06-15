@@ -1,4 +1,4 @@
-import { AnimationEgentSkil } from "@/components/AGENT/AnimationEgentSkil"
+import { AnimationEgentSkil } from "@/components/AGENT/AgentInfo/AnimationEgentSkil"
 import { Header } from "@/components/TOP PAGE/Header"
 import { Videodata } from "@/lib/Video"
 import { DBsumnail } from "@/components/session/DBsumnail"

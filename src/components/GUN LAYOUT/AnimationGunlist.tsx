@@ -5,9 +5,7 @@ import type { WeponType } from "@/types/type"
 import { motion } from "framer-motion"
 import Ticker from 'framer-motion-ticker'
 import { useEffect, useState } from 'react'
-import ScrambleText from "./ScrambleText"
-
-
+import ScrambleText from "../ui/ScrambleText"
 
 type WepondataProps = {
   filterdWeponSkin: WeponType[]
@@ -21,12 +19,12 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
 
   useEffect(() => {
     const handleVisibility = () => {
-
       setIsPlaying(!document.hidden)
     }
     document.addEventListener("visibilitychange", handleVisibility)
     return () => document.removeEventListener("visibilitychange", handleVisibility)
   }, [])
+
   const basepath = "/guns"
 
   const linkVariants = {
@@ -40,21 +38,24 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
         "0 0 12px #BF00FF, 0 0 30px #BF00FF, 0 0 50px #7B00FF",
         "0 0 8px #00F5FF, 0 0 20px #00F5FF",
       ],
-      transition: { duration: 1 }
-    }
+      transition: { duration: 1 },
+    },
   }
 
   const textVariants = {
     initial: { opacity: 0 },
     hover: {
       color: "#00F5FF",
-      opacity: 1
+      opacity: 1,
     },
   }
 
   return (
     <>
-    <ScrambleText className={"text-bold text-center  text-9xl mb-20"}>WEPONS LIST</ScrambleText>
+      <ScrambleText className="text-bold text-center text-4xl md:text-9xl mb-10 md:mb-20">
+        WEPONS LIST
+      </ScrambleText>
+
       <div className="w-full mask-t-from-80% mask-b-from-90% bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/singular.jpg)] bg-position-[160px] bg-cover">
         <Ticker
           duration={30}
@@ -69,13 +70,10 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
               variants={linkVariants}
               initial="initial"
               whileHover="hover"
-              style={{ display: "block", flexShrink: 0, margin: "0 12px" }}
+              style={{ display: "block", flexShrink: 0, margin: "0 8px" }}
               className="backdrop-blur-2xl"
             >
-              <div
-                style={{ width: "300px", height: "600px", position: "relative" }}
-                className="overflow-hidden backdrop-blur-xl border rounded-3xl flex items-center justify-center mt-10 mb-10 "
-              >
+              <div className="relative overflow-hidden backdrop-blur-xl border rounded-3xl flex items-center justify-center mt-5 mb-5 md:mt-10 md:mb-10 w-[180px] h-[350px] md:w-[300px] md:h-[600px]">
                 <MotionImage
                   src={wepon.displayIcon}
                   alt={wepon.displayName}
@@ -85,7 +83,7 @@ export const AnimationGunlist = ({ filterdWeponSkin }: WepondataProps) => {
                   loading="eager"
                 />
                 <motion.p
-                  className="font-bold  text-center p-2 text-3xl z-10"
+                  className="font-bold text-center p-2 text-lg md:text-3xl z-10"
                   variants={textVariants}
                 >
                   {wepon.displayName}

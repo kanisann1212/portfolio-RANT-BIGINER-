@@ -49,59 +49,68 @@ export default async function Mypage({
     include: { video: true },
     orderBy: { createdAt: "desc" },
   })
- const agents = await getAgents()
+
+  const agents = await getAgents()
 
   const allVideoItems = videos.map((v) => ({
     id: v.id,
     url: v.url,
     title: v.title,
-    agentIcon: getAgentIcon(agents, v.agent),  
+    agentIcon: getAgentIcon(agents, v.agent),
     userName: v.user.name ?? "名無し",
   }))
 
+  const likedVideoItems = likedVideos.map((like) => ({
+    id: like.video.id,
+    url: like.video.url,
+    title: like.video.title,
+    agentIcon: getAgentIcon(agents, like.video.agent),
+  }))
 
-const likedVideoItems = likedVideos.map((like) => ({
-  id: like.video.id,
-  url: like.video.url,
-  title: like.video.title,
-  agentIcon: getAgentIcon(agents, like.video.agent),  
-}))
-
-
-const myVideoItems = Video.map((v) => ({
-  id: v.id,
-  url: v.url,
-  title: v.title,
-  agentIcon: getAgentIcon(agents, v.agent),  
-}))
+  const myVideoItems = Video.map((v) => ({
+    id: v.id,
+    url: v.url,
+    title: v.title,
+    agentIcon: getAgentIcon(agents, v.agent),
+  }))
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Header />
 
-  
-      <div className="flex justify-between bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/Reaver.jpg)] bg-left items-center p-20 mask-b-from-90% mask-t-from-90% bg-cover h-[300px]">
-        <div className="flex items-center gap-5">
+
+      <div className="flex flex-col md:flex-row justify-between bg-[url(https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/Reaver.jpg)] bg-left items-center p-6 md:p-20 mask-b-from-90% mask-t-from-90% bg-cover min-h-[200px] md:h-[300px] gap-4">
+        <div className="flex items-center gap-3 md:gap-5">
           <Image
             src={(session?.user.favoriteAgent ? EgentIcon1 : session?.user.image) ?? ""}
             alt="VALORANT"
             width={150}
             height={150}
-            className="object-cover rounded-full"
+            className="object-cover rounded-full w-[80px] h-[80px] md:w-[150px] md:h-[150px]"
           />
           <h1
-            className="text-9xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] font-extrabold"
+            className="text-3xl md:text-9xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] font-extrabold"
             style={{ WebkitTextStroke: "4px rgba(0,0,0,0.85)", paintOrder: "stroke fill" }}
-          >{session?.user.name}</h1>
+          >
+            {session?.user.name}
+          </h1>
         </div>
-        <div className="flex">
+        <div className="flex items-center">
           {VTier && (
-            <Image src={VTier.largeIcon} alt={VTier.tierName} width={150} height={150} />
+            <Image
+              src={VTier.largeIcon}
+              alt={VTier.tierName}
+              width={150}
+              height={150}
+              className="w-[60px] h-[60px] md:w-[150px] md:h-[150px]"
+            />
           )}
           <h1
-            className="text-9xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] font-extrabold"
+            className="text-2xl md:text-9xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] font-extrabold"
             style={{ WebkitTextStroke: "4px rgba(0,0,0,0.85)", paintOrder: "stroke fill" }}
-          >{VTier?.divisionName}</h1>
+          >
+            {VTier?.divisionName}
+          </h1>
         </div>
       </div>
 
@@ -114,7 +123,8 @@ const myVideoItems = Video.map((v) => ({
 
       <MypageCarousel />
 
-      <div className="flex ml-5">
+  
+      <div className="flex flex-col md:flex-row ml-2 md:ml-5 gap-4">
         <CreateVideo />
         <Gauge value={Video.length} max={100} label="YOUR VIDEO" />
       </div>
@@ -145,12 +155,13 @@ const myVideoItems = Video.map((v) => ({
         </PaginationContent>
       </Pagination>
 
-   
+ 
       <SectionTitle title="いいねした動画" />
       <VideoGridList
         videos={likedVideoItems}
         emptyMessage="まだいいねした動画がありません"
       />
+
 
       <SectionTitle title="あなたの動画" />
       <VideoGridList videos={myVideoItems} />

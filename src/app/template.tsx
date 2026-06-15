@@ -1,4 +1,4 @@
-import { PageTransition } from "@/components/animation/PageTransition";
+import { PageTransition } from "@/components/ui/PageTransition";
 
 export default function Template({
   children,

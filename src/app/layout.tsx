@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Archivo_Black, Dela_Gothic_One } from "next/font/goo
 import "./globals.css";
 import { SessionProvider } from "next-auth/react"
 import { Toaster } from "@/components/ui/sonner"
-import Background3DIcon from "@/components/animation/BackGround3D";
+import Background3DIcon from "@/components/TOP PAGE/BackGround3D";
 
 const valorant = Archivo_Black({
   weight: "400",

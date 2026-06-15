@@ -1,4 +1,4 @@
-import { Intro } from "@/components/animation/Intro";
+import { Intro } from "@/components/TOP PAGE/Intro";
 import { Top } from "@/components/TOP PAGE/Top";
 import { IconHeader } from "@/lib/getIconHeader";
 import { RankHeader } from "@/lib/RANK";

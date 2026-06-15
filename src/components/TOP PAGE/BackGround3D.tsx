@@ -5,7 +5,7 @@ import { useRef } from "react"
 
 
 const LAYERS = 18
-const THICKNESS = 36  
+const THICKNESS = 36
 const STEP = THICKNESS / (LAYERS - 1)
 
 function Icon() {
@@ -24,8 +24,8 @@ export default function Background3DIcon() {
 
     useAnimationFrame((t) => {
         if (!ref.current) return
-        const rotateY = (t / 40) % 360           
-        const rotateX = Math.sin(t / 3000) * 18  
+        const rotateY = (t / 40) % 360
+        const rotateX = Math.sin(t / 3000) * 18
         ref.current.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
     })
 
@@ -37,8 +37,8 @@ export default function Background3DIcon() {
                 <div className="bg3d-icon" ref={ref}>
                     {Array.from({ length: LAYERS }).map((_, i) => {
                         const z = (i - mid) * STEP
-                        const edge = Math.abs(i - mid) / mid       
-                        const lightness = 35 + edge * 35           
+                        const edge = Math.abs(i - mid) / mid
+                        const lightness = 35 + edge * 35
                         return (
                             <div
                                 key={i}

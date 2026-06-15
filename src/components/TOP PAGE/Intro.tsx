@@ -1,7 +1,7 @@
 'use client'
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import ScrambleText from "./ScrambleText"
+import ScrambleText from "../ui/ScrambleText"
 
 export const Intro = ({ children }: { children: React.ReactNode }) => {
   const [isIntro, setIsIntro] = useState(false)

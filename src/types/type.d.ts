@@ -17,6 +17,10 @@ export type MapInfoProp = {
   params: Promise<{ maping: string }>
 }
 export type MapTypedata = {
+  data: MapType[]
+}
+
+export type MapTypeD = {
   data: MapType
 }
 export type AgentdataProps = {
@@ -122,6 +126,15 @@ export type Skined = {
   displayName: string,
   displayIcon: string,
   chromas: SkinLevels[]
+}
+export type WeaponSkinChroma ={
+  uuid: string;
+  displayName: string;
+  displayIcon: string;
+  fullRender: string;
+  swatch: string;
+  streamedVideo: string;
+  assetPath: string;
 }
 
 export type SkinLevels = {

@@ -61,7 +61,7 @@ export const AnimationMaplist = ({ BattleMap }: BattleMapProps) => {
             }}
           >
             <motion.h1
-              className="text-white text-3xl absolute top-4 left-4"
+              className="text-white sm:text-3xl absolute top-4 left-4"
               variants={textVariants}
             >{item.displayName}</motion.h1>
           </MotionLink>

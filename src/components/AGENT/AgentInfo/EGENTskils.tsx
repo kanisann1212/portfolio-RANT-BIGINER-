@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Dela_Gothic_One } from "next/font/google"
-import ScrambleText from "../animation/ScrambleText"
+import ScrambleText from "@/components/ui/ScrambleText"
 
 const valorantEgent = Dela_Gothic_One({
   weight: "400",

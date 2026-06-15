@@ -1,23 +1,21 @@
-
 'use client'
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { DBsumnail } from "@/components/session/DBsumnail"
-
 
 type VideoItem = {
   id: string
   url: string
   title: string
   agentIcon: string
-  userName?: string   
+  userName?: string
 }
 
 type Props = {
   videos: VideoItem[]
-  linkable?: boolean      
-  showUserName?: boolean  
-  emptyMessage?: string  
+  linkable?: boolean
+  showUserName?: boolean
+  emptyMessage?: string
 }
 
 const MotionLink = motion.create(Link)
@@ -30,40 +28,39 @@ export const VideoGridList = ({
 }: Props) => {
   const linkVariants = {
     initial: { opacity: 0, y: 200 },
-    hover: { scale: 1.1 },
+    hover: { scale: 1.05 },
     transition: { duration: 1.5 },
   }
 
   if (videos.length === 0) {
     return (
-      <h1 className="text-4xl font-bold text-center text-gray-400 my-10">
+      <h1 className="text-2xl md:text-4xl font-bold text-center text-gray-400 my-10">
         {emptyMessage}
       </h1>
     )
   }
 
   return (
-    <div className="grid lg:grid-cols-5 gap-2 grid-cols-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-2 px-4 md:px-0">
       {videos.map((v) => (
         <MotionLink
           key={v.id}
-          href={linkable ? `/gallery/${v.id}` : "#"}
+          href={linkable ? `/mypage/${v.id}` : "#"}
           variants={linkVariants}
           initial="initial"
           whileHover="hover"
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="w-[500px] h-[350px]">
+          <div className="w-full h-[200px] md:h-[350px]">
             <div className="flex flex-col items-center justify-center gap-2">
-<DBsumnail
-  url={v.url}
-  agentIcon={v.agentIcon}   
-  title={v.title}
-  urlid={v.id}
-/>
+              <DBsumnail
+                url={v.url}
+                agentIcon={v.agentIcon}
+                title={v.title}
+              />
               {showUserName && v.userName && (
-                <p className="text-center font-bold">{v.userName}</p>
+                <p className="text-center font-bold text-sm md:text-base">{v.userName}</p>
               )}
             </div>
           </div>

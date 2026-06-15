@@ -1,8 +1,8 @@
-import type { Agent } from "@/types/type"
 import { Controller, useWatch } from "react-hook-form"
 import Image from "next/image"
 import { Control } from "react-hook-form"
 import type { MapType } from "@/types/type"
+import type { MapTypedata } from "@/types/type"
 import {
   Select,
   SelectContent,
@@ -22,11 +22,11 @@ type Props = {
 
 
 export const SelectMap = ({ control }: Props) => {
-  const [Map, setMap] = useState<MapType[]>([])
+  const [maps, setMap] = useState<MapType[]>([])
   useEffect(() => {
     const fetchAgent = async () => {
       const res = await fetch("https://valorant-api.com/v1/maps")
-      const json = await res.json()
+      const json : MapTypedata = await res.json()
       const BattleMap: MapType[] = json.data
         .filter((map: MapType) => map.splash)
         .filter((map: MapType) => map.tacticalDescription)
@@ -34,10 +34,12 @@ export const SelectMap = ({ control }: Props) => {
     }
     fetchAgent()
   }, [])
+ 
   const selectedName = useWatch({ control, name: "map" })
-  const selectedMap = Map.find(
+  const selectedMap = maps.find(
     (a) => a.displayName === selectedName
   )
+   
   return (
     <div className="relative w-[500px] h-[250px]">
       <Controller
@@ -51,7 +53,7 @@ export const SelectMap = ({ control }: Props) => {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Agents</SelectLabel>
-                {Map.map((Map: MapType) => {
+                {maps.map((Map: MapType) => {
                   return (
                     <SelectItem
                       value={Map.displayName}

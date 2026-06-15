@@ -27,9 +27,15 @@ export const Top = ({ Icon, VTier }: Props) => {
   const { data: session } = useSession()
   return (
     <>
-      <Video />
-      <div className="absolute top-150 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h1 className={'font-bold text-white italic text-center text-9xl '}>RANT BEGINNER</h1>
+<div className="relative w-full h-screen overflow-hidden">
+        <Video />
+      
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4">
+
+          <h1 className="font-bold text-white italic text-center text-4xl md:text-9xl">
+            RANT BEGINNER
+          </h1>
+        </div>
       </div>
       <div className="fixed left-10 top-10 " >
         <Image
@@ -74,7 +80,7 @@ export const Top = ({ Icon, VTier }: Props) => {
         </SessionProvider>
       </div>
       <MIBAE syubun="このサイトは初心者である方全員に向けて作りました。" hukubun="どうかこのサイトがあなたのバロ人生の糧になることを祈っております。" kime="ーFOR YOUー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/kai.jpg" />
-      <div className="grid grid-cols-3 gap-10 m-15 mr-20 ml-20 h-[80vh]">
+      <div className="grid md:grid-cols-3 gap-10 w-[400xp] m-15 sm:mr-20 sm:ml-20 sm:h-[80vh]">
         <div className="h-full">
           <Midashi
             src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/abys.webp"}

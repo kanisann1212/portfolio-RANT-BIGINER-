@@ -1,4 +1,4 @@
-import { AnimationGunlist } from "@/components/animation/AnimationGunlist"
+import { AnimationGunlist } from "@/components/GUN LAYOUT/AnimationGunlist"
 import { Header } from "@/components/TOP PAGE/Header"
 import { MIBAE } from "@/components/TOP PAGE/MIBAE"
 import type { WeponType, Skined } from "@/types/type"

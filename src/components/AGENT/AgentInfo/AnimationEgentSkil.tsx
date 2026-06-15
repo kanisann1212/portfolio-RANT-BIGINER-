@@ -1,8 +1,8 @@
 'use client'
 import { Dela_Gothic_One } from "next/font/google"
-import { AnimationSkilofMap } from "@/components/AGENT/AnimatioSkilofMap"
-import ScrambleText from "@/components/animation/ScrambleText"
-import { EgentSkils } from "@/components/AGENT/EGENTskils"
+import { AnimationSkilofMap } from "@/components/AGENT/AgentInfo/AnimatioSkilofMap"
+import ScrambleText from "@/components/ui/ScrambleText"
+import { EgentSkils } from "./EGENTskils"
 import Image from "next/image"
 import type { AgentTypeInfo } from "@/types/type"
 import { motion } from "framer-motion"
