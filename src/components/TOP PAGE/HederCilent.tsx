@@ -1,11 +1,12 @@
 'use client'
 import { useState } from "react"
-import { LogoutButton } from "../ui/LogoutButton"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 import Image from "next/image"
-import { User, Menu, X } from "lucide-react"
+import { User, Menu, X, LogOut } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useSession, SessionProvider } from "next-auth/react"
+import { useSession } from "next-auth/react"
+import { Button } from "@/components/ui/button"
 import {
   Avatar,
   AvatarBadge,
@@ -48,25 +49,32 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
     { href: "/egents", label: "EGENT" },
   ]
 
+  const handleLogout = async () => {
+    setIsOpen(false)
+    await signOut({ callbackUrl: "/" })
+  }
+
   return (
     <div className={`flex justify-between items-center ${Hanten ? "text-white" : "text-black"} pt-5 border-b relative`}>
 
-
-      <div className="flex pl-10 pb-5 items-center">
+      {/* ロゴ */}
+      <div className="flex pl-4 md:pl-10 pb-5 items-center">
         <MotionLink href="/" variants={linkVariants} initial="initial" whileHover="hover">
           <Image src={Hanten ? whiteZ : blackZ} alt="VALOGO" width={30} height={30} />
         </MotionLink>
         <MotionLink href="/" variants={linkVariants} initial="initial" whileHover="hover">
           <motion.h1
-            className={`${Hanten ? "text-white" : "text-black"} text-xl md:text-3xl pl-5`}
+            className={`${Hanten ? "text-white" : "text-black"} text-lg md:text-3xl pl-3 md:pl-5`}
             variants={textVariants}
-          >RANT BEGINNER</motion.h1>
+          >
+            RANT BEGINNER
+          </motion.h1>
         </MotionLink>
       </div>
 
-
+      {/* ハンバーガーボタン（スマホだけ） */}
       <button
-        className="md:hidden pr-10 pb-5 z-50"
+        className="md:hidden pr-4 pb-5 z-50"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
@@ -76,7 +84,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
         )}
       </button>
 
-
+      {/* PC用ナビ */}
       <div className="hidden md:flex space-x-15 pr-15 pb-5 items-center">
         {navLinks.map((link) => (
           <MotionLink
@@ -91,40 +99,47 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
           </MotionLink>
         ))}
 
-        <SessionProvider>
-          {session?.user ? (
-            <MotionLink
-              href="/mypage"
-              variants={linkVariants}
-              initial="initial"
-              whileHover="hover"
-            >
-              <Avatar>
-                <AvatarImage src={session.user.image ?? Icon} alt="user" />
-                <AvatarFallback>CN</AvatarFallback>
-                <AvatarBadge className="bg-green-600 dark:bg-green-800">
-                  {VTier && (
-                    <Image src={VTier} alt="rank" fill className="object-cover" />
-                  )}
-                </AvatarBadge>
-              </Avatar>
-            </MotionLink>
-          ) : (
-            <MotionLink
-              href="/mypage"
-              variants={linkVariants}
-              initial="initial"
-              whileHover="hover"
-            >
-              <User className="w-10 h-10" />
-            </MotionLink>
-          )}
-        </SessionProvider>
+        {session?.user ? (
+          <MotionLink
+            href="/mypage"
+            variants={linkVariants}
+            initial="initial"
+            whileHover="hover"
+          >
+            <Avatar>
+              <AvatarImage src={session.user.image ?? Icon} alt="user" />
+              <AvatarFallback>CN</AvatarFallback>
+              <AvatarBadge className="bg-green-600 dark:bg-green-800">
+                {VTier && (
+                  <Image src={VTier} alt="rank" fill className="object-cover" />
+                )}
+              </AvatarBadge>
+            </Avatar>
+          </MotionLink>
+        ) : (
+          <MotionLink
+            href="/mypage"
+            variants={linkVariants}
+            initial="initial"
+            whileHover="hover"
+          >
+            <User className="w-10 h-10" />
+          </MotionLink>
+        )}
 
-        {isLogin && <LogoutButton />}
+        {isLogin && (
+          <Button
+            onClick={handleLogout}
+            variant="outline"
+            className="flex items-center gap-2"
+          >
+            <LogOut className="w-5 h-5" />
+            ログアウト
+          </Button>
+        )}
       </div>
 
-
+      {/* スマホ用メニュー */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -145,22 +160,28 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
               </Link>
             ))}
 
-            <SessionProvider>
-              {session?.user ? (
-                <Link href="/mypage" onClick={() => setIsOpen(false)}>
-                  <Avatar>
-                    <AvatarImage src={session.user.image ?? Icon} alt="user" />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                </Link>
-              ) : (
-                <Link href="/mypage" onClick={() => setIsOpen(false)}>
-                  <User className="w-10 h-10" />
-                </Link>
-              )}
-            </SessionProvider>
+            {session?.user ? (
+              <Link href="/mypage" onClick={() => setIsOpen(false)}>
+                <Avatar>
+                  <AvatarImage src={session.user.image ?? Icon} alt="user" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </Link>
+            ) : (
+              <Link href="/mypage" onClick={() => setIsOpen(false)}>
+                <User className="w-10 h-10" />
+              </Link>
+            )}
 
-            {isLogin && <LogoutButton />}
+            {isLogin && (
+              <button
+                onClick={handleLogout}
+                className={`${Hanten ? "text-white" : "text-black"} text-2xl font-bold flex items-center gap-3`}
+              >
+                <LogOut className="w-6 h-6" />
+                ログアウト
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

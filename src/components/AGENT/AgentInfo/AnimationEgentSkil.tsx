@@ -13,10 +13,9 @@ type AgentSkilProps = {
   Egentinfo: AgentTypeInfo
 }
 
-
 const valorantEgent = Dela_Gothic_One({
   weight: "400",
-  subsets: ["latin"]
+  subsets: ["latin"],
 })
 
 const ImageVariants = {
@@ -25,42 +24,80 @@ const ImageVariants = {
   hover: { scale: 1.1 },
 }
 
-
-
 export const AnimationEgentSkil = ({ Egentinfo }: AgentSkilProps) => {
   const MapAgentInfo: string = Egentinfo.displayName
   return (
+    <div className="relative z-10 w-full mt-10">
 
-    <div className="relative z-10 grid grid-cols-[600px_1fr] w-full mt-10">
-      <div className="relative w-[600px] h-screen sticky top-0">
+      <div className="block lg:hidden relative w-full h-[400px] mb-6">
         <MotionImage
           src={Egentinfo.fullPortrait}
-          alt="VALORANT"
+          alt={Egentinfo.displayName}
           fill
           variants={ImageVariants}
           initial="initial"
           animate="animate"
-          whileHover="hover"
-          transition={{ duration: 1.5 }}
-          className="object-cover bg-no-repeat"
+          className="object-contain bg-no-repeat"
           style={{
             backgroundImage: `url(${Egentinfo.role.displayIcon})`,
-            backgroundSize: "250px",
+            backgroundSize: "150px",
             backgroundPosition: "top",
           }}
         />
       </div>
-      <div className="flex flex-col gap-10 pt-20 pb-20 items-center">
-        <div>
-          <ScrambleText className={`${valorantEgent.className} font-bold text-9xl text-center text-white`}>{Egentinfo.displayName}</ScrambleText>
-          <p className="text-white text-2xl p-5 font-bold">{Egentinfo.description}</p>
+
+
+      <div className="grid grid-cols-1 lg:grid-cols-[600px_1fr]">
+
+
+        <div className="relative w-[600px] h-screen sticky top-0 hidden lg:block">
+          <MotionImage
+            src={Egentinfo.fullPortrait}
+            alt={Egentinfo.displayName}
+            fill
+            variants={ImageVariants}
+            initial="initial"
+            animate="animate"
+            whileHover="hover"
+            transition={{ duration: 1.5 }}
+            className="object-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${Egentinfo.role.displayIcon})`,
+              backgroundSize: "250px",
+              backgroundPosition: "top",
+            }}
+          />
         </div>
-        <EgentSkils description={Egentinfo.abilities[0].description} Name={Egentinfo.abilities[0].displayName} Icon={Egentinfo.abilities[0].displayIcon} />
-        <EgentSkils description={Egentinfo.abilities[1].description} Name={Egentinfo.abilities[1].displayName} Icon={Egentinfo.abilities[1].displayIcon} />
-        <EgentSkils description={Egentinfo.abilities[2].description} Name={Egentinfo.abilities[2].displayName} Icon={Egentinfo.abilities[2].displayIcon} />
-        <EgentSkils description={Egentinfo.abilities[3].description} Name={Egentinfo.abilities[3].displayName} Icon={Egentinfo.abilities[3].displayIcon} />
-        <h1 className={`${valorantEgent.className} font-bold text-5xl text-center text-white m-10`}>主要マップ</h1>
-        <AnimationSkilofMap MapAgentInfo={MapAgentInfo} />
+
+
+        <div className="flex flex-col gap-6 md:gap-10 pt-10 md:pt-20 pb-10 md:pb-20 items-center px-4 lg:px-0">
+          <div>
+            <ScrambleText
+              className={`${valorantEgent.className} font-bold text-5xl md:text-9xl text-center text-white`}
+            >
+              {Egentinfo.displayName}
+            </ScrambleText>
+            <p className="text-white text-base md:text-2xl p-3 md:p-5 font-bold">
+              {Egentinfo.description}
+            </p>
+          </div>
+
+          {Egentinfo.abilities.map((ability, index) => (
+            <EgentSkils
+              key={index}
+              description={ability.description}
+              Name={ability.displayName}
+              Icon={ability.displayIcon}
+            />
+          ))}
+
+          <h1
+            className={`${valorantEgent.className} font-bold text-3xl md:text-5xl text-center text-white m-5 md:m-10`}
+          >
+            主要マップ
+          </h1>
+          <AnimationSkilofMap MapAgentInfo={MapAgentInfo} />
+        </div>
       </div>
     </div>
   )

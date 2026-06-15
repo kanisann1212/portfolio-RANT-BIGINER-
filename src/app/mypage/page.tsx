@@ -123,7 +123,6 @@ export default async function Mypage({
 
       <MypageCarousel />
 
-  
       <div className="flex flex-col md:flex-row ml-2 md:ml-5 gap-4">
         <CreateVideo />
         <Gauge value={Video.length} max={100} label="YOUR VIDEO" />

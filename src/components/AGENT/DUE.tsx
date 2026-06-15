@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 
 const variants = {
-  initial: { x: -2000, opacity: 0 },
+  initial: { x: -200, opacity: 0 },
   animate: { x: 0, opacity: 1 },
 }
 const MotionLink = motion.create(Link)
@@ -23,7 +23,7 @@ export const DUE = ({ A }: AProps) => {
   return (
     <>
       <motion.div
-        className="relative mask-b-from-80% mask-t-from-70% h-[500px]"
+        className="relative md:mask-b-from-80% md:mask-t-from-70% min-h-[500px] md:h-[500px] overflow-hidden"
         initial='initial'
         whileInView="animate"
         variants={variants}
@@ -40,32 +40,32 @@ export const DUE = ({ A }: AProps) => {
           src="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/JETT.jpg"
           alt="background"
           fill
-          className="object-cover -z-10 "
+          className="hidden md:block object-cover -z-10" 
           style={{ objectPosition: "0% 0%" }}
         />
         <h1
-          className="text-black text-8xl absolute left-320 top-50 z-10"
-          style={{ right: "500px", top: "200px" }}
+          className="absolute inset-0 flex items-center justify-center md:justify-end md:pr-[20vw] z-10 text-5xl md:text-8xl font-black text-black pointer-events-none"
         >DUELIST</h1>
-        <div className="grid  h-[500px] "
-          style={{ gridTemplateColumns: 'repeat(8,110px)' }}>
+        <div className="relative z-20 flex flex-col md:flex-row w-full h-auto md:h-[500px]"
+          >
           {A.map((sen: Agent) => {
             return (
               <MotionLink
                 key={sen.uuid}
-                className="text-black"
+                className="w-full md:w-[120px] block"
                 variants={linkVariants}
                 initial="initial"
                 whileHover="hover"
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 href={`${basepath}/${sen.uuid}`}
               >
-                <div className="relative h-[500px] overflow-hidden border-4 border-white">
+                <div className="relative h-[120px] md:h-[500px] w-full overflow-hidden border-2 md:border-4 border-white">
                   <Image
                     src={sen.displayIcon}
                     alt="VALORANT"
                     fill
-                    className="object-cover"
+                     className="object-cover object-center md:object-center"
                   />
                 </div>
               </MotionLink>

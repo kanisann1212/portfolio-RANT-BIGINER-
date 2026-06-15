@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerContent,
@@ -9,12 +9,11 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import { SelectAgent } from "@/components/session/SelectAgent";
-import { SelectMap } from "./SlectMap";
+import { SelectAgent } from "@/components/session/SelectAgent"
+import { SelectMap } from "./SlectMap"
 import { toast } from "sonner"
-import { ImageSumnail } from "./ImageSumnail";
-import { useRouter } from "next/navigation";
-
+import { ImageSumnail } from "./ImageSumnail"
+import { useRouter } from "next/navigation"
 
 export type VideoFormData = {
   title: string
@@ -35,7 +34,6 @@ export const CreateVideo = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         })
-
         if (!response.ok) {
           throw new Error("投稿失敗")
         }
@@ -48,50 +46,47 @@ export const CreateVideo = () => {
           return "投稿完了！"
         },
         error: "投稿に失敗しました。値を確認してください",
-      },
-
+      }
     )
   }
 
   return (
     <Drawer>
       <div className="flex items-center justify-center">
-        <DrawerTrigger
-          className="border h-[80px] w-[120px] rounded-3xl mt-10"
-        >CREATE
+        <DrawerTrigger className="border h-[60px] w-[100px] md:h-[80px] md:w-[120px] rounded-3xl mt-10 text-sm md:text-base">
+          CREATE
         </DrawerTrigger>
       </div>
-      <div>
-        <DrawerContent
-          className="h-[700px] ">
-          <DrawerHeader>
-            <DrawerTitle className="text-2xl font-bold">CREATE YOUR VIDEO</DrawerTitle>
-            <textarea
-              id="title"
-              autoFocus
-              placeholder="Video Title("
-              {...register("title")}
-              className="w-full resize-none overflow-hidden bg-transparent text-4xl focus:outline-none font-extrabold" />
-            <textarea
-              id="YoutubeURL"
-              autoFocus
-              placeholder="URL"
-              {...register("url")}
-              className="w-full resize-none overflow-hidden bg-transparent text-4xl focus:outline-none font-extrabold" />
-          </DrawerHeader>
-          <div className="flex justify-between ml-5 mr-5">
-            <div className="grid grid-cols-2">
-              <SelectAgent control={control} />
-              <SelectMap control={control} />
-            </div>
-            <ImageSumnail control={control} />
-          </div>
-          <DrawerFooter>
-            <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </div>
-    </Drawer>
+      <DrawerContent className="h-[85vh] md:h-[700px] overflow-y-auto">
+        <DrawerHeader>
+          <DrawerTitle className="text-xl md:text-2xl font-bold">CREATE YOUR VIDEO</DrawerTitle>
+          <textarea
+            autoFocus
+            placeholder="Video Title"
+            {...register("title")}
+            className="w-full resize-none overflow-hidden bg-transparent text-2xl md:text-4xl focus:outline-none font-extrabold"
+          />
+          <textarea
+            placeholder="URL"
+            {...register("url")}
+            className="w-full resize-none overflow-hidden bg-transparent text-2xl md:text-4xl focus:outline-none font-extrabold"
+          />
+        </DrawerHeader>
 
+        <div className="flex flex-col md:flex-row justify-between mx-4 md:mx-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <SelectAgent control={control} />
+            <SelectMap control={control} />
+          </div>
+          <ImageSumnail control={control} />
+        </div>
+
+        <DrawerFooter>
+          <Button onClick={handleSubmit(onSubmit)} className="w-full md:w-auto">
+            Submit
+          </Button>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   )
 }

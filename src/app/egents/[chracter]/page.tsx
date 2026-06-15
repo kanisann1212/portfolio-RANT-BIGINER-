@@ -29,12 +29,12 @@ export default async function Chracter({ params }: EgentPromise) {
       />
       <Header />
       <AnimationEgentSkil Egentinfo={Egentinfo} />
-      {Video.length > 0 ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
+      {Video.length > 60 ? (<div className="grid lg:grid-cols-5 gap-2 grid-cols-2 mt-30 ml-2 mr-2">
         {Video.map((v) => {
           return (
-            <div className=" w-[500px] h-[350px]" key={v.id}>
-              <div className="flex flex-col items-center justify-ceter gap-2 ">
-                <DBsumnail url={v.url}  title={v.title}  />
+            <div className="w-full md:w-[500px] h-[200px] md:h-[350px]" key={v.id}>
+              <div className="flex flex-col items-center justify-center gap-2">
+                <DBsumnail url={v.url} title={v.title} />
                 <div className="flex items-center gap-4 w-full">
                   <div className="border-t border-black flex-1" />
                 </div>

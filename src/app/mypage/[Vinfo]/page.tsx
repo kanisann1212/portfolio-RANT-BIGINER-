@@ -49,7 +49,7 @@ export default async function MypageVideo({ params }: MypageInfoProps) {
       <Header />
       <div className="flex flex-col gap-6 md:gap-20 px-4 md:px-10">
 
-        {/* タイトル + ボタン */}
+        
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-6 md:mt-20 gap-4">
           <h1 className="text-2xl md:text-8xl font-extrabold">{videoID.title}</h1>
           <div className="flex items-center gap-4">
@@ -62,12 +62,12 @@ export default async function MypageVideo({ params }: MypageInfoProps) {
           </div>
         </div>
 
-        {/* 動画プレイヤー */}
+      
         <div className="w-full aspect-video max-w-[1400px] mx-auto">
           <VideoPlayer src={videoURL} />
         </div>
 
-        {/* エージェント + マップ情報 */}
+     
         <div className="w-full max-w-[1400px] mx-auto overflow-hidden">
           <MapAgentMypage Agent={Agent} Map={Map} />
         </div>

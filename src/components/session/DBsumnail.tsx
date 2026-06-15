@@ -18,26 +18,28 @@ export const DBsumnail = ({ url, agentIcon, title }: Props) => {
   const videoId = getYoutubeId(url)
 
   return (
-    <div className="relative w-full h-[150px] md:h-[250px] rounded-2xl">
+    <div className="relative w-full h-[120px] sm:h-[150px] md:h-[250px] rounded-2xl">
       {videoId ? (
         <>
           <Image
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt="サムネイル"
             fill
-            className="object-contain rounded-2xl"
+            className="object-cover rounded-2xl"
           />
-          <div className="absolute bottom-2 left-2 md:left-8 rounded-3xl backdrop-blur-2xl w-[90%] md:w-[430px] flex items-center gap-2 md:gap-4">
+          <div className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2 md:left-8 rounded-3xl backdrop-blur-2xl w-[95%] md:w-[430px] flex items-center gap-1 sm:gap-2 md:gap-4 p-1 sm:p-0">
             {agentIcon && (
               <Image
                 src={agentIcon}
                 alt="エージェント"
                 width={50}
                 height={50}
-                className="object-contain rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px]"
+                className="object-contain rounded-full w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] md:w-[50px] md:h-[50px]"
               />
             )}
-            <h1 className="pl-2 md:pl-5 border-l-2 text-sm md:text-base">{title}</h1>
+            <h1 className="pl-1 sm:pl-2 md:pl-5 border-l-2 text-xs sm:text-sm md:text-base truncate">
+              {title}
+            </h1>
           </div>
         </>
       ) : (
@@ -48,17 +50,19 @@ export const DBsumnail = ({ url, agentIcon, title }: Props) => {
             fill
             className="object-contain rounded-3xl"
           />
-          <div className="rounded-3xl backdrop-blur-2xl flex items-center gap-2 md:gap-4">
+          <div className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2 rounded-3xl backdrop-blur-2xl w-[95%] flex items-center gap-1 sm:gap-2 md:gap-4 p-1 sm:p-0">
             {agentIcon && (
               <Image
                 src={agentIcon}
                 alt="エージェント"
                 width={50}
                 height={50}
-                className="object-contain rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px]"
+                className="object-contain rounded-full w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] md:w-[50px] md:h-[50px]"
               />
             )}
-            <h1 className="pl-2 md:pl-5 border-l-2 text-sm md:text-base">{title}</h1>
+            <h1 className="pl-1 sm:pl-2 md:pl-5 border-l-2 text-xs sm:text-sm md:text-base truncate">
+              {title}
+            </h1>
           </div>
         </>
       )}

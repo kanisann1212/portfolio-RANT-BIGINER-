@@ -14,7 +14,7 @@ export const MypageCarousel = async () => {
   const RANKicon = await RANKICON()
   const Video =await Videodata()
   return (
-    <Carousel className="w-full max-w-2xl mx-auto">
+    <Carousel className="w-full md:w-[600px] w-[300px] md:max-w-2xl mx-auto">
       <CarouselContent className="">
         <CarouselItem>
           <Card className={`bg-black border-white border-2 ${Video.length >= 5 ? "opacity-100" : "opacity-50"}`}>
