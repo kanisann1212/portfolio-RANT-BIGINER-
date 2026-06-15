@@ -30,12 +30,12 @@ export default async function MapS({ params }: MapInfoProp) {
       <Header />
       <MapSChild MapMicro={MapMicro} Vlength={Video.length} isLogin={isLogin} />
 
-      {Video.length > 20 && isLogin ? (
+      {Video.length > 0 && isLogin ? (
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 mt-10 md:mt-30 mx-2">
           {Video.map((v) => (
             <div className="w-full md:w-[500px] h-[200px] md:h-[350px]" key={v.id}>
               <div className="flex flex-col items-center justify-center gap-2">
-                <DBsumnail url={v.url} agentIcon={v.agent} title={v.title} />
+                <DBsumnail url={v.url}  title={v.title} />
                 <div className="flex items-center gap-4 w-full">
                   <div className="border-t border-black flex-1" />
                 </div>

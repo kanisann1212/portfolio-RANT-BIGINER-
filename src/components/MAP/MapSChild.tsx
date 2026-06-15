@@ -15,7 +15,6 @@ type Props = {
   Vlength: number
   isLogin: boolean
 }
-
 export const MapSChild = ({ MapMicro, Vlength, isLogin }: Props) => {
   const MapNameInfo: string = MapMicro.displayName
   const MapsRecomend = MapsPattern[MapNameInfo].agents
@@ -38,17 +37,26 @@ export const MapSChild = ({ MapMicro, Vlength, isLogin }: Props) => {
       >
         {MapMicro.displayName}
       </motion.h1>
-      <div className="flex flex-col lg:flex-row items-center">
-        <div className="relative w-full lg:w-[1000px] px-4 lg:px-0 sm:mb-10">
+
+  
+      <div className="flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 w-full">
+        
+
+        <div className="relative w-full lg:flex-1 px-4 lg:px-0 sm:mb-10">
           <Image
             src={MapMicro.displayIcon}
             alt="VALORANT"
-            width={500}
-            height={500}
-            className="w-full h-auto"
+            width={1000} 
+            height={1000}
+            className="w-full h-auto object-contain"
           />
         </div>
-        <MapsRecomendparts MapsRecomend={MapsRecomend} Vlength={Vlength} isLogin={isLogin} />
+
+       
+        <div className="w-full lg:w-1/2">
+          <MapsRecomendparts MapsRecomend={MapsRecomend} Vlength={Vlength} isLogin={isLogin} />
+        </div>
+
       </div>
     </>
   )

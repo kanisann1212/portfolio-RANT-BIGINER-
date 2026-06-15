@@ -10,7 +10,7 @@ const getYoutubeId = (url: string) => {
 
 type Props = {
   url: string
-  agentIcon: string
+  agentIcon?: string
   title: string
 }
 

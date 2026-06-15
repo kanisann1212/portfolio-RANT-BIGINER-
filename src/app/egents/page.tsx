@@ -27,7 +27,7 @@ export default async function Egents() {
     <>
       <Header />
       <MIBAE syubun="ヴァロラントはチームプレイが必須です。"hukubun="キャラの理解を深めて勝利をつかみましょう" kime="ーONE FOR ALLー" gazou="https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/AGENTP.jpg"/>
-      {Video.length >= 10 && isLogin ?
+      {Video.length >= 0 && isLogin ?
       (   
         <AgentUnlock Sentinel={Sentinel} Initiater={Initiater} duelist={duelist} controller={controller} />
       ) 

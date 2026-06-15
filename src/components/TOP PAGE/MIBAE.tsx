@@ -37,7 +37,7 @@ export const MIBAE = ({ gazou, kime, syubun, hukubun }: MIBAProps) => {
         whileInView={{ scale: 1, y: 0 }}
         transition={{ duration: 0.5 }}>
 
-        <div className="relative flex-shrink-0  md:w-3/5 h-[400px] w-[350px] md:w-[500px] sm:h-[700px]">
+        <div className="relative flex-shrink-0  md:w-3/5 h-[400px] w-[350px] md:w-[1500px] sm:h-[700px]">
           <Image
             src={gazou}
             alt="VALORANT"
