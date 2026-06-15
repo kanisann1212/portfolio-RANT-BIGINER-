@@ -1,4 +1,5 @@
 'use client'
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import {
@@ -23,8 +24,9 @@ export type VideoFormData = {
 }
 
 export const CreateVideo = () => {
-  const { register, control, handleSubmit } = useForm<VideoFormData>()
+  const { register, control, handleSubmit, reset } = useForm<VideoFormData>()
   const router = useRouter()
+  const [open, setOpen] = useState(false)
 
   const onSubmit = async (data: VideoFormData) => {
     toast.promise(
@@ -41,8 +43,9 @@ export const CreateVideo = () => {
       {
         loading: "投稿中...",
         success: () => {
-          router.push("/mypage")
-          router.refresh()
+          reset()             
+          setOpen(false)       
+          router.refresh()     
           return "投稿完了！"
         },
         error: "投稿に失敗しました。値を確認してください",
@@ -51,7 +54,7 @@ export const CreateVideo = () => {
   }
 
   return (
-    <Drawer>
+    <Drawer open={open} onOpenChange={setOpen}>
       <div className="flex items-center justify-center">
         <DrawerTrigger className="border h-[60px] w-[100px] md:h-[80px] md:w-[120px] rounded-3xl mt-10 text-sm md:text-base">
           CREATE
