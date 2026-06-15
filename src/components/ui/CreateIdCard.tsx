@@ -17,7 +17,7 @@ export type SignUpData = {
   name: string
   email: string
   password: string
-  favoriteAgent: string
+  favoriteAgent?: string
 }
 
 export function CreateIDCard() {

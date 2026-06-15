@@ -20,7 +20,6 @@ export const WeponSkinPatternLayout = ({ Guninfo, Windex }: Props) => {
         <video
           className="inset-0 w-full h-full object-cover"
           src={Gaia2.streamedVideo}
-          alt="VALORANT"
           autoPlay
           loop
           muted
