@@ -27,7 +27,7 @@
 
 | カテゴリ | 使用技術 |
 |------|------|
-| **Frontend** | Next.js 14 (App Router) / TypeScript | React 
+| **Frontend** | Next.js 16 (App Router) / TypeScript | React 
 | **Styling** | Tailwind CSS / shadcn/ui | Lucide React 
 | **Animation** | Framer Motion | 
 | **認証** | NextAuth.js v5 (Google / Discord / Credentials) |
