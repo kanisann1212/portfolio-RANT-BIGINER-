@@ -45,7 +45,7 @@ export const Midashi = ({ midashi, src, page }: midashiProps) => {
       >
 
         <motion.h1
-          className="text-white sm:text-8xl absolute bottom-4 left-2"
+          className="text-white sm:text-6xl absolute bottom-4 left-2"
           variants={textVariants}
         >{midashi}</motion.h1>
       </MotionLink>
