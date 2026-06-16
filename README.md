@@ -2,7 +2,7 @@
 
 > Valorantの初心者から玄人まで誰もが自分のクリップを共有・管理するためのプラットフォーム 
 
-**🔗 Live Demo:** [https://portfolio-rant-biginer.vercel.app/]
+**🔗 Live Demo:** [portfolio-rant-biginer.vercel.app](https://portfolio-rant-biginer.vercel.app/)
 **🔗 Demo ![トップページ](./images/topPage.png)
            ![ログインフォーム](./images/LoginForm.png)
 
@@ -16,6 +16,12 @@
 > そういう「プレイヤーが自分のクリップを自分のために管理できる場所」が欲しくて作った。
 
 ---
+
+
+## 🔑 デモアカウント
+| Email | Password |
+|-------|----------|
+| demo@example.com | demo1234 |
 
 ## 🛠 Tech Stack
 
