@@ -46,7 +46,7 @@ export const HeaderClient = ({ Hanten, VTier, Icon, isLogin }: Props) => {
     { href: "/", label: "HOME" },
     { href: "/guns", label: "WEAPON" },
     { href: "/map", label: "MAP" },
-    { href: "/egents", label: "EGENT" },
+    { href: "/egents", label: "AGENT" },
   ]
 
   const handleLogout = async () => {

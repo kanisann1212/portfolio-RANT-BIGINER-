@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RANT BIGINER",
+  title: "RANT BIGINNER",
   description: "あなたの物語をここから始めましょう。たくさん動画を上げて報酬をゲット！！",
 };
 

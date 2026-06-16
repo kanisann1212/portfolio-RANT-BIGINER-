@@ -92,14 +92,14 @@ export const Top = ({ Icon, VTier }: Props) => {
         <div className="h-full">
           <Midashi
             src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/egents.avif"}
-            midashi={"EGENT"}
+            midashi={"AGENT"}
             page={"/egents"}
           />
         </div>
         <div className="h-full">
           <Midashi
             src={"https://totnfaipgpkmgjvlcqee.supabase.co/storage/v1/object/public/RANTBIGINNER.IMAGE/wepon.avif"}
-            midashi={"WEPON"}
+            midashi={"WEAPON"}
             page={"/guns"}
           />
         </div>
