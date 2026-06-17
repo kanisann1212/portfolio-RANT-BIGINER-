@@ -27,11 +27,11 @@
 
 | カテゴリ | 使用技術 |
 |------|------|
-| **Frontend** | Next.js 16 (App Router) / TypeScript | React 
+| **Frontend** | Next.js 16 (App Router) / TypeScript / React |
 | **Styling** | Tailwind CSS / shadcn/ui | Lucide React 
 | **Animation** | Framer Motion | 
 | **認証** | NextAuth.js v5 (Google / Discord / Credentials) |
-| **DB** | Prisma / Supabase (PostgreSQL) |
+| **DB** | Prisma / Supabase (PostgreSQL) / React Hook Form(formデータ保存の為)|
 | **Storage** | Supabase Storage |
 | **Deploy** | Vercel |
 | **外部API** | [Valorant API](https://valorant-api.com/) |
