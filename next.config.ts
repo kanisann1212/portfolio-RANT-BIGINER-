@@ -26,6 +26,8 @@ const nextConfig: NextConfig = {
         hostname: "totnfaipgpkmgjvlcqee.supabase.co",
         pathname: "/storage/v1/object/public/**",
       },
+      
+      
     ],
   },
 };

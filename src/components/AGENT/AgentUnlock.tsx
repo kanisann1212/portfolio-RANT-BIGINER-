@@ -4,9 +4,9 @@ import { DUE } from "./DUE"
 import { INI } from "./INI"
 import { CONT } from "./CONT"
 
-export const AgentUnlock = ({Sentinel,duelist,Initiater,controller} :AgentdataProps) =>{
+export const AgentUnlock = ({Sentinel,duelist,Initiater,controller} :AgentdataProps) => {
   return (
-      <div className="w-full px-4 md:px-0">    
+      <div className="w-full px-4 md:px-0" data-testid="test">    
         <SEN A={Sentinel} />
 
         <h1 className="text-black text-5xl md:text-9xl my-6 md:m-10 text-center"></h1>
