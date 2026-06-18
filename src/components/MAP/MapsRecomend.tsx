@@ -36,7 +36,6 @@ export const MapsRecomendparts = ({ MapsRecomend, Vlength, isLogin }: MapsRecome
   const isClickable = Vlength >= 10 && isLogin
 
   return (
-<<<<<<< HEAD
     <div className="grid grid-cols-2 gap-4 md:gap-10 w-full max-w-[1400px] mx-auto px-4 lg:px-0">
       {MapsRecomend.map((recomend: MapAgent) => {
         const inner = (
@@ -58,21 +57,6 @@ export const MapsRecomendparts = ({ MapsRecomend, Vlength, isLogin }: MapsRecome
             <motion.h1
               className={`${valorantEgent.className} font-bold text-lg md:text-2xl`}
               variants={textVariants}
-=======
-    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-10 shrink-0 w-full lg:min-w-[1400px] px-4 lg:px-0 ">
-      {Vlength >= 10 && isLogin ? (
-        <>
-          {MapsRecomend.map((recomend: MapAgent) => (
-            <MotionLink
-              className="flex flex-col items-center"
-              key={recomend.uuid}
-              href={`${basepath}/${recomend.uuid}`}
-              variants={linkVariants}
-              initial="initial"
-              whileHover="hover"
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
->>>>>>> origin/main
             >
               {recomend.name}
             </motion.h1>
