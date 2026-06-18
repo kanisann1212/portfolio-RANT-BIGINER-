@@ -36,7 +36,7 @@ export const MapsRecomendparts = ({ MapsRecomend, Vlength, isLogin }: MapsRecome
   const isClickable = Vlength >= 10 && isLogin
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:gap-10 w-full max-w-[1400px] mx-auto px-4 lg:px-0">
+    <div className="grid grid-cols-2 gap-2 md:gap-10 w-full max-w-[1400px] mx-auto px-4 lg:px-0">
       {MapsRecomend.map((recomend: MapAgent) => {
         const inner = (
           <>

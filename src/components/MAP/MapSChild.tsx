@@ -42,7 +42,7 @@ export const MapSChild = ({ MapMicro, Vlength, isLogin }: Props) => {
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 w-full">
         
 
-        <div className="relative w-full lg:flex-1 px-4 lg:px-0 sm:mb-10">
+       <div className="relative w-full lg:flex-1 min-w-0 px-4 lg:px-0 sm:mb-10">
           <Image
             src={MapMicro.displayIcon}
             alt="VALORANT"
@@ -53,9 +53,9 @@ export const MapSChild = ({ MapMicro, Vlength, isLogin }: Props) => {
         </div>
 
        
-        <div className="w-full lg:w-1/2">
-          <MapsRecomendparts MapsRecomend={MapsRecomend} Vlength={Vlength} isLogin={isLogin} />
-        </div>
+<div className="w-full lg:w-1/2 min-w-0">
+  <MapsRecomendparts MapsRecomend={MapsRecomend} Vlength={Vlength} isLogin={isLogin} />
+</div>
 
       </div>
     </>
