@@ -34,7 +34,7 @@ const basepath = "/egents"
 
 export const MapsRecomendparts = ({ MapsRecomend, Vlength, isLogin }: MapsRecomendProps) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 shrink-0 w-full lg:min-w-[1400px] px-4 lg:px-0 ">
+    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-10 shrink-0 w-full lg:min-w-[1400px] px-4 lg:px-0 ">
       {Vlength >= 10 && isLogin ? (
         <>
           {MapsRecomend.map((recomend: MapAgent) => (
