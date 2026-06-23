@@ -20,7 +20,7 @@ type RANKdata = {
 
 export const RankHeader = cache(async () => {
   const session = await auth()
-  const res = await fetch("https://valorant-api.com/v1/competitivetiers")
+  const res = await fetch("https://valorant-api.com/v1/competitivetiers",{ next: { revalidate: 86400 } })
   const json: RANKdata = await res.json()
   const RANKD = json.data
   const RANK = {

@@ -7,7 +7,7 @@ import type { Wepondata } from "@/types/type"
 
 export default async function Guns() {
 
-  const res = await fetch("https://valorant-api.com/v1/weapons")
+  const res = await fetch("https://valorant-api.com/v1/weapons",{ next: { revalidate: 86400 } })
   const json: Wepondata = await res.json()
   const filterdWeponSkin: WeponType[] = json.data.map((wepon: WeponType) => ({
     ...wepon,

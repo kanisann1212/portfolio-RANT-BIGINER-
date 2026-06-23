@@ -10,7 +10,7 @@ import { MapTypeD } from "@/types/type"
 
 export default async function MapS({ params }: MapInfoProp) {
   const { maping } = await params
-  const res = await fetch(`https://valorant-api.com/v1/maps/${maping}`)
+  const res = await fetch(`https://valorant-api.com/v1/maps/${maping}`,{ next: { revalidate: 86400 } })
   const json: MapTypeD = await res.json()
   const MapMicro: MapType = json.data
   const Video = await Videodata()

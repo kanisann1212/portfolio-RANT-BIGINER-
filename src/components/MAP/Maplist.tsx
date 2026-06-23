@@ -6,7 +6,7 @@ type MapJson = {
 }
 
 export const MapList = async () => {
-  const res = await fetch("https://valorant-api.com/v1/maps")
+  const res = await fetch("https://valorant-api.com/v1/maps",{ next: { revalidate: 86400 } })
   const json :MapJson= await res.json()
 
   const BattleMap: MapType[] = json.data

@@ -27,7 +27,7 @@ export const SelectAgentByID = ({ control }: Props) => {
   const [agents, setAgents] = useState<Agent[]>([])
   useEffect(() => {
     const fetchAgent = async() =>{ 
-     const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
+     const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP",{ next: { revalidate: 86400 } })
      const json: Egentdata = await res.json()
     setAgents(json.data)
   }

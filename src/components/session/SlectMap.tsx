@@ -23,7 +23,7 @@ export const SelectMap = ({ control }: Props) => {
   const [maps, setMap] = useState<MapType[]>([])
   useEffect(() => {
     const fetchMap = async () => {
-      const res = await fetch("https://valorant-api.com/v1/maps")
+      const res = await fetch("https://valorant-api.com/v1/maps",{ next: { revalidate: 86400 } })
       const json: MapTypedata = await res.json()
       const BattleMap: MapType[] = json.data
         .filter((map: MapType) => map.splash)

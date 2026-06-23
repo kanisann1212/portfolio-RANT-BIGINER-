@@ -5,7 +5,7 @@ type AgentData = { data: Agent[] }
 
 export const getAgents = async (): Promise<Agent[]> => {
   const res = await fetch(
-    "https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP"
+    "https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP",{ next: { revalidate: 86400 } }
   )
   const json: AgentData = await res.json()
   return json.data

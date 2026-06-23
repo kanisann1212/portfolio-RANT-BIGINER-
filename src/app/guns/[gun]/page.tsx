@@ -6,7 +6,7 @@ import type { Weponpattern } from "@/types/type";
 
 export default async function Gun({ params }: GunPromise) {
   const { gun } = await params
-  const res = await fetch(`https://valorant-api.com/v1/weapons/${gun}`)
+  const res = await fetch(`https://valorant-api.com/v1/weapons/${gun}`,{ next: { revalidate: 86400 } })
   const json : WepondataInfo= await res.json()
   const Weponinfo = json.data
   const WeponName = json.data.displayName

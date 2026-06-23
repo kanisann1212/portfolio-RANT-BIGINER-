@@ -9,7 +9,9 @@ import { AgentUnlock } from "@/components/AGENT/AgentUnlock"
 
 
 export default async function Egents() {
-  const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP")
+  const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=ja-JP",
+    { next: { revalidate: 86400 } }
+  )
   const json : Egentdata= await res.json()
 const Sentinel = json.data
   .filter((EGEN: Agent) => EGEN.role.displayName === "センチネル")
